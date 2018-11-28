@@ -32,15 +32,15 @@ class App extends MicroContainer {
           date: '2019-01-01'
         },
         task01_02: {
-          title: 'Task 01_02',
+          title: 'Task 01_02'
+        },
+        task02: {
+          title: 'Task 02',
+          starred: true,
           children: [
             'task02_01',
             'task02_02'
           ]
-        },
-        task02: {
-          title: 'Task 02',
-          starred: true
         },
         task02_01: {
           title: 'Task 02_01',
