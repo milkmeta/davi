@@ -12,6 +12,9 @@
   &__body {
     display: flex;
     flex-grow: 1;
+    align-self: center;
+    width: 100%;
+    max-width: 60rem;
   }
 
   &__aside {
