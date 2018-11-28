@@ -6,7 +6,9 @@ const TaskDetailPanel = props =>  (
   <div className="TaskDetailPanel">
     <ul className="TaskDetailPanel__list">
       {props.children.map(id => (
-        <TaskDetailItem key={id} master={props.master} id={id} dispatch={props.dispatch} />
+        <li key={id}>
+          <TaskDetailItem master={props.master} id={id} dispatch={props.dispatch} />
+        </li>
       ))}
     </ul>
   </div>

@@ -1,3 +1,31 @@
-.TaskDetailItem {
+.TaskDetailItem__self {
+  display: flex;
+  border: 1px hsla(0, 0%, 0%, .1);
+  border-bottom-style: solid;
+}
 
+.TaskDetailItem__text {
+  padding: .5rem 0;
+  border: none;
+  background-color: transparent;
+}
+
+.TaskDetailItem__text--title {
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.TaskDetailItem__button {
+  flex-shrink: 0;
+  padding: 0 .5rem;
+  border: none;
+  background: none;
+  color: hsla(0, 0%, 0%, .1);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.TaskDetailItem__children {
+  padding-left: 1.5rem;
 }
