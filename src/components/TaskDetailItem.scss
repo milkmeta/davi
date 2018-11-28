@@ -1,0 +1,79 @@
+.TaskDetailItem {
+  &__self {
+    display: flex;
+    overflow: hidden;
+    border: 1px hsla(0, 0%, 0%, .1) {
+      bottom-style: solid;
+    }
+  }
+
+  &__checkbox {
+    flex-shrink: 0;
+    align-self: center;
+    appearance: none;
+    width: 1rem;
+    height: 1rem;
+    margin: 0 .25rem;
+    border: solid 2px hsla(270, 100%, 65%, 1);
+    border-radius: 50%;
+    background-color: hsla(270, 100%, 65%, .2);
+    cursor: pointer;
+
+    &:checked {
+      border-color: hsla(0, 0%, 0%, .2);
+      background-color: hsla(0, 0%, 0%, .1);
+    }
+  }
+
+  %__text {
+    overflow: hidden;
+    padding: .5rem .25rem;
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    text-overflow: ellipsis;
+  }
+
+  &__title {
+    @extend %__text;
+    width: 100%;
+  }
+
+  &__date {
+    @extend %__text;
+    font-size: .75rem;
+  }
+
+  &__button {
+    flex-shrink: 0;
+    padding: 0 .25rem;
+    border: none;
+    background: none;
+    color: hsla(0, 0%, 0%, .2);
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  &__children {
+    padding-left: .75rem;
+  }
+
+  &[data-starred="true"] > &__self {
+    .TaskDetailItem__title {
+      font-weight: bold;
+    }
+  }
+
+  &[data-checked="true"] > &__self {
+    .TaskDetailItem__title,
+    .TaskDetailItem__date {
+      color: hsla(0, 0%, 0%, .2);
+    }
+  }
+
+  @media (min-width: 45rem) {
+    &__children {
+      padding-left: 1.5rem;
+    }
+  }
+}

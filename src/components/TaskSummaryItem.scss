@@ -1,0 +1,24 @@
+.TaskSummaryItem {
+  display: flex;
+
+  &__title {
+    flex-grow: 1;
+    overflow: hidden;
+    padding: .5rem .25rem;
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    font-weight: bold;
+    text-overflow: ellipsis;
+  }
+
+  &__button {
+    flex-shrink: 0;
+    padding: 0 .25rem;
+    border: none;
+    background: none;
+    color: hsla(0, 0%, 0%, .2);
+    font-weight: bold;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,9 @@
+.TaskDetailList {
+  margin: 0;
+  padding: 1rem;
+  list-style: none;
+
+  & & {
+    padding: 0;
+  }
+}

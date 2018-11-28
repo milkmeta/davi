@@ -1,0 +1,23 @@
+.Header {
+  display: flex;
+  align-items: center;
+  padding: .5rem 1rem;
+  background-color: hsla(270, 100%, 65%, 1);
+  color: hsla(0, 0%, 100%, 1);
+  font-weight: bold;
+
+  &__title {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  &__about {
+    margin: 0 {
+      left: auto;
+    }
+
+    a {
+      color: inherit;
+    }
+  }
+}
