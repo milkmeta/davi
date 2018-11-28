@@ -23,6 +23,7 @@
 
   &__date {
     @extend %__text;
+    font-size: .75rem;
   }
 
   &__button {
@@ -36,7 +37,7 @@
   }
 
   &__children {
-    padding-left: 1.5rem;
+    padding-left: .5rem;
   }
 
   &[data-starred="true"] > &__self {
@@ -49,6 +50,12 @@
     .TaskDetailItem__title,
     .TaskDetailItem__date {
       color: hsla(0, 0%, 0%, .2);
+    }
+  }
+
+  @media (min-width: 45rem) {
+    &__children {
+      padding-left: 1rem;
     }
   }
 }

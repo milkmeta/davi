@@ -15,10 +15,17 @@
   }
 
   &__aside {
-    flex-basis: 15rem;
+    display: none;
   }
 
   &__main {
     flex-grow: 1;
+  }
+
+  @media (min-width: 45rem) {
+    &__aside {
+      display: block;
+      flex-basis: 15rem;
+    }
   }
 }
