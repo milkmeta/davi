@@ -1,6 +1,7 @@
 import React from 'react';
 import './Main.css';
 import Header from './Header';
+import TaskSummaryPanel from './TaskSummaryPanel';
 import TaskDetailPanel from './TaskDetailPanel';
 
 const Main = props =>  (
@@ -10,7 +11,7 @@ const Main = props =>  (
     </header>
     <div className="Main__body">
       <aside className="Main__aside">
-        aside
+        <TaskSummaryPanel dispatch={props.dispatch} />
       </aside>
       <main className="Main__main">
         <TaskDetailPanel dispatch={props.dispatch} />
