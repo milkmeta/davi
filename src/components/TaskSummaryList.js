@@ -1,8 +1,8 @@
 import React from 'react';
-import './TaskSummaryPanel.scss';
+import './TaskSummaryList.scss';
 import TaskSummaryItem from './TaskSummaryItem';
 
-const TaskSummaryPanel = props => {
+const TaskSummaryList = props => {
   const scanStarredIds = (ids) => {
     let foundIds = [];
     ids.forEach(id => {
@@ -20,8 +20,8 @@ const TaskSummaryPanel = props => {
   // TODO: ID走査時の無限ループの阻止
 
   return (
-    <div className="TaskSummaryPanel">
-      <ul className="TaskSummaryPanel__list">
+    <div className="TaskSummaryList">
+      <ul className="TaskSummaryList__list">
         {starredIds.map(id => (
           <li key={id}>
             <TaskSummaryItem master={props.master} id={id} dispatch={props.dispatch} />
@@ -32,9 +32,9 @@ const TaskSummaryPanel = props => {
   );
 };
 
-TaskSummaryPanel.defaultProps = {
+TaskSummaryList.defaultProps = {
   master: {},
   children: []
 };
 
-export default TaskSummaryPanel;
+export default TaskSummaryList;

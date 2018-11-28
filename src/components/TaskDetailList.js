@@ -1,10 +1,10 @@
 import React from 'react';
-import './TaskDetailPanel.scss';
+import './TaskDetailList.scss';
 import TaskDetailItem from './TaskDetailItem';
 
-const TaskDetailPanel = props => (
-  <div className="TaskDetailPanel">
-    <ul className="TaskDetailPanel__list">
+const TaskDetailList = props => (
+  <div className="TaskDetailList">
+    <ul className="TaskDetailList__list">
       {props.children.map(id => (
         <li key={id}>
           <TaskDetailItem master={props.master} id={id} dispatch={props.dispatch} />
@@ -14,9 +14,9 @@ const TaskDetailPanel = props => (
   </div>
 );
 
-TaskDetailPanel.defaultProps = {
+TaskDetailList.defaultProps = {
   master: {},
   children: []
 };
 
-export default TaskDetailPanel;
+export default TaskDetailList;

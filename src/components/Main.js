@@ -1,8 +1,8 @@
 import React from 'react';
 import './Main.scss';
 import Header from './Header';
-import TaskSummaryPanel from './TaskSummaryPanel';
-import TaskDetailPanel from './TaskDetailPanel';
+import TaskSummaryList from './TaskSummaryList';
+import TaskDetailList from './TaskDetailList';
 
 const Main = props => (
   <div className="Main">
@@ -11,10 +11,10 @@ const Main = props => (
     </header>
     <div className="Main__body">
       <aside className="Main__aside">
-        <TaskSummaryPanel master={props.master} children={[props.rootId]} dispatch={props.dispatch} />
+        <TaskSummaryList master={props.master} children={[props.rootId]} dispatch={props.dispatch} />
       </aside>
       <main className="Main__main">
-        <TaskDetailPanel master={props.master} children={[props.rootId]} dispatch={props.dispatch} />
+        <TaskDetailList master={props.master} children={[props.rootId]} dispatch={props.dispatch} />
       </main>
     </div>
   </div>

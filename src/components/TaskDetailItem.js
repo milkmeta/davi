@@ -1,6 +1,6 @@
 import React from 'react';
 import './TaskDetailItem.scss';
-import TaskDetailPanel from './TaskDetailPanel';
+import TaskDetailList from './TaskDetailList';
 
 const TaskDetailItem = props => {
   const item = props.master[props.id];
@@ -15,7 +15,7 @@ const TaskDetailItem = props => {
         <button className="TaskDetailItem__button">menu</button>
       </div>
       <div className="TaskDetailItem__children">
-        {item.children ? <TaskDetailPanel master={props.master} children={item.children} dispatch={props.dispatch} /> : null}
+        {item.children ? <TaskDetailList master={props.master} children={item.children} dispatch={props.dispatch} /> : null}
       </div>
     </div>
   );
