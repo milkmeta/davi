@@ -1,8 +1,9 @@
 .TaskDetailItem {
   &__self {
     display: flex;
-    border: 1px hsla(0, 0%, 0%, .1);
-    border-bottom-style: solid;
+    border: 1px hsla(0, 0%, 0%, .1) {
+      bottom-style: solid;
+    }
   }
 
   &__text {

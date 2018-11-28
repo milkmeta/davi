@@ -12,8 +12,9 @@
   }
 
   &__about {
-    margin: 0;
-    margin-left: auto;
+    margin: 0 {
+      left: auto;
+    }
 
     a {
       color: inherit;
