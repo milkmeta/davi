@@ -1,6 +1,6 @@
 import React from 'react';
-import './TaskDetailList.scss';
 import TaskDetailItem from './TaskDetailItem';
+import './TaskDetailList.scss';
 
 const TaskDetailList = props => (
   <ul className="TaskDetailList">

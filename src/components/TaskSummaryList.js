@@ -1,6 +1,6 @@
 import React from 'react';
-import './TaskSummaryList.scss';
 import TaskSummaryItem from './TaskSummaryItem';
+import './TaskSummaryList.scss';
 
 const TaskSummaryList = props => {
   const scanStarredIds = (ids) => {

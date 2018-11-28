@@ -1,11 +1,10 @@
 import React from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-import './Main.scss';
 import Header from './Header';
 import TaskSummaryList from './TaskSummaryList';
 import TaskDetailList from './TaskDetailList';
+import './Main.scss';
 
 library.add(fas);
 

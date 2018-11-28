@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './TaskDetailItem.scss';
 import TaskDetailList from './TaskDetailList';
+import './TaskDetailItem.scss';
 
 const TaskDetailItem = props => {
   const item = props.master[props.id];
