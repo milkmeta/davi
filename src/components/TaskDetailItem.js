@@ -1,5 +1,5 @@
 import React from 'react';
-import './TaskDetailItem.css';
+import './TaskDetailItem.scss';
 import TaskDetailPanel from './TaskDetailPanel';
 
 const TaskDetailItem = props =>  {

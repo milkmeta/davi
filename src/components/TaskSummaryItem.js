@@ -1,5 +1,5 @@
 import React from 'react';
-import './TaskSummaryItem.css';
+import './TaskSummaryItem.scss';
 
 const TaskSummaryItem = props =>  (
   <div className="TaskSummaryItem">{props.title}</div>

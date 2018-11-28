@@ -1,0 +1,24 @@
+.Main {
+  display: flex;
+  flex-direction: column;
+  color: hsla(0, 0%, 0%, .6);
+  line-height: 1.5;
+  user-select: none;
+
+  &__header {
+    flex-shrink: 0;
+  }
+
+  &__body {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  &__aside {
+    flex-basis: 15rem;
+  }
+
+  &__main {
+    flex-grow: 1;
+  }
+}

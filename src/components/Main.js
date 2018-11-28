@@ -1,5 +1,5 @@
 import React from 'react';
-import './Main.css';
+import './Main.scss';
 import Header from './Header';
 import TaskSummaryPanel from './TaskSummaryPanel';
 import TaskDetailPanel from './TaskDetailPanel';
