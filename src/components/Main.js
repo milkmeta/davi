@@ -11,7 +11,7 @@ const Main = props => (
     </header>
     <div className="Main__body">
       <aside className="Main__aside">
-        <TaskSummaryPanel dispatch={props.dispatch} />
+        <TaskSummaryPanel master={props.master} children={[props.rootId]} dispatch={props.dispatch} />
       </aside>
       <main className="Main__main">
         <TaskDetailPanel master={props.master} children={[props.rootId]} dispatch={props.dispatch} />
