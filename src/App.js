@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MicroContainer from 'react-micro-container';
 import uuidv4 from 'uuid/v4';
 import './App.css';
 
