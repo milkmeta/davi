@@ -2,7 +2,7 @@ import React from 'react';
 import './TaskDetailPanel.scss';
 import TaskDetailItem from './TaskDetailItem';
 
-const TaskDetailPanel = props =>  (
+const TaskDetailPanel = props => (
   <div className="TaskDetailPanel">
     <ul className="TaskDetailPanel__list">
       {props.children.map(id => (

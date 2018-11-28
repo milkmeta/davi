@@ -4,7 +4,7 @@ import Header from './Header';
 import TaskSummaryPanel from './TaskSummaryPanel';
 import TaskDetailPanel from './TaskDetailPanel';
 
-const Main = props =>  (
+const Main = props => (
   <div className="Main">
     <header className="Main__header">
       <Header dispatch={props.dispatch} />
