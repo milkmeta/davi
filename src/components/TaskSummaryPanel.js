@@ -1,12 +1,13 @@
 import React from 'react';
 import './TaskSummaryPanel.css';
+import TaskSummaryItem from './TaskSummaryItem';
 
 const TaskSummaryPanel = props =>  (
   <div className="TaskSummaryPanel">
     <ul className="TaskSummaryPanel__list">
-      <li>あいうえお</li>
-      <li>かきくけこ</li>
-      <li>さしすせそ</li>
+      <TaskSummaryItem title="あいうえお" />
+      <TaskSummaryItem title="かきくけこ" />
+      <TaskSummaryItem title="さしすせそ" />
     </ul>
   </div>
 );

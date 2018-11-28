@@ -1,12 +1,13 @@
 import React from 'react';
 import './TaskDetailPanel.css';
+import TaskDetailItem from './TaskDetailItem';
 
 const TaskDetailPanel = props =>  (
   <div className="TaskDetailPanel">
     <ul className="TaskDetailPanel__list">
-      <li>あいうえお</li>
-      <li>かきくけこ</li>
-      <li>さしすせそ</li>
+      <TaskDetailItem title="あいうえお" />
+      <TaskDetailItem title="かきくけこ" />
+      <TaskDetailItem title="さしすせそ" />
     </ul>
   </div>
 );
