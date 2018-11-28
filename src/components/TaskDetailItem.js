@@ -12,7 +12,7 @@ const TaskDetailItem = props => {
         <button className="TaskDetailItem__button">menu</button>
       </div>
       <div className="TaskDetailItem__children">
-        <TaskDetailPanel master={props.master} children={item.children} dispatch={props.dispatch} />
+        {item.children ? <TaskDetailPanel master={props.master} children={item.children} dispatch={props.dispatch} /> : null}
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 .TaskDetailItem {
   &__self {
     display: flex;
+    overflow: hidden;
     border: 1px hsla(0, 0%, 0%, .1) {
       bottom-style: solid;
     }
@@ -12,17 +13,16 @@
     border: none;
     background-color: transparent;
     color: inherit;
+    text-overflow: ellipsis;
   }
 
   &__title {
     @extend %__text;
-    flex-grow: 1;
-    text-overflow: ellipsis;
+    width: 100%;
   }
 
   &__date {
     @extend %__text;
-    flex-shrink: 0;
   }
 
   &__button {
