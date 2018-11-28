@@ -1,0 +1,22 @@
+.Header {
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  background-color: hsla(270, 100%, 65%, 1);
+  color: hsla(0, 0%, 100%, 1);
+  font-weight: bold;
+}
+
+.Header__title {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.Header__about {
+  margin: 0;
+  margin-left: auto;
+}
+
+.Header__about a {
+  color: inherit;
+}
