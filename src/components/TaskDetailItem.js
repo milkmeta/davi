@@ -4,6 +4,9 @@ import TaskDetailPanel from './TaskDetailPanel';
 
 const TaskDetailItem = props => {
   const item = props.master[props.id];
+  if (item.archived) {
+    return false;
+  }
   return (
     <div className="TaskDetailItem" data-starred={item.starred} data-checked={item.checked}>
       <div className="TaskDetailItem__self">

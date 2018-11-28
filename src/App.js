@@ -14,7 +14,8 @@ class App extends MicroContainer {
           children: [
             'task01',
             'task02',
-            'task03'
+            'task03',
+            'task04'
           ]
         },
         task01: {
@@ -30,6 +31,11 @@ class App extends MicroContainer {
         task03: {
           title: 'Task 3',
           date: '2019-03-01'
+        },
+        task04: {
+          title: 'Task 4',
+          date: '2019-04-01',
+          archived: true
         }
       }
     };
