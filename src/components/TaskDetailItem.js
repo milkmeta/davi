@@ -11,6 +11,7 @@ const TaskDetailItem = props => {
   return (
     <div className="TaskDetailItem" data-starred={item.starred} data-checked={item.checked}>
       <div className="TaskDetailItem__self">
+        <input type="checkbox" className="TaskDetailItem__checkbox" defaultChecked={item.checked} />
         <input type="text" className="TaskDetailItem__title" defaultValue={item.title} />
         <input type="text" className="TaskDetailItem__date" defaultValue={item.date} />
         <button className="TaskDetailItem__button"><FontAwesomeIcon icon={['fas', 'ellipsis-h']} /></button>

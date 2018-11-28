@@ -7,6 +7,22 @@
     }
   }
 
+  &__checkbox {
+    flex-shrink: 0;
+    align-self: center;
+    appearance: none;
+    width: 1rem;
+    height: 1rem;
+    margin-right: .25rem;
+    border: solid 2px hsla(0, 0%, 0%, .1);
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:checked {
+      background: hsla(0, 0%, 0%, .4);
+    }
+  }
+
   %__text {
     overflow: hidden;
     padding: .5rem 0;
