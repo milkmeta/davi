@@ -6,19 +6,19 @@
   user-select: none;
 }
 
-.Main > .header {
+.Main__header {
   flex-shrink: 0;
 }
 
-.Main > .body {
+.Main__body {
   display: flex;
   flex-grow: 1;
 }
 
-.Main > .body > .aside {
+.Main__aside {
   flex-basis: 15rem;
 }
 
-.Main > .body > .main {
+.Main__main {
   flex-grow: 1;
 }

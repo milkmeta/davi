@@ -3,14 +3,14 @@ import './Main.css';
 
 const Main = props =>  (
   <div className="Main">
-    <header className="header">
-      Header
+    <header className="Main__header">
+      <Header />
     </header>
-    <div className="body">
-      <aside className="aside">
+    <div className="Main__body">
+      <aside className="Main__aside">
         aside
       </aside>
-      <main className="main">
+      <main className="Main__main">
         main
       </main>
     </div>
