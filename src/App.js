@@ -6,7 +6,31 @@ import Main from './components/Main';
 class App extends MicroContainer {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      rootId: 'root',
+      master: {
+        root: {
+          title: 'Root',
+          children: [
+            'task01',
+            'task02',
+            'task03'
+          ]
+        },
+        task01: {
+          title: 'Task 1',
+          date: '2019-01-01'
+        },
+        task02: {
+          title: 'Task 2',
+          date: '2019-02-01'
+        },
+        task03: {
+          title: 'Task 3',
+          date: '2019-03-01'
+        }
+      }
+    };
   }
 
   render() {

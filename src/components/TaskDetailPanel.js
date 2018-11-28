@@ -5,11 +5,16 @@ import TaskDetailItem from './TaskDetailItem';
 const TaskDetailPanel = props =>  (
   <div className="TaskDetailPanel">
     <ul className="TaskDetailPanel__list">
-      <TaskDetailItem title="あいうえお" date="01/01" />
-      <TaskDetailItem title="かきくけこ" date="02/01" />
-      <TaskDetailItem title="さしすせそ" date="03/01" />
+      {props.children.map(id => (
+        <TaskDetailItem key={id} master={props.master} id={id} dispatch={props.dispatch} />
+      ))}
     </ul>
   </div>
 );
+
+TaskDetailPanel.defaultProps = {
+  master: {},
+  children: []
+};
 
 export default TaskDetailPanel;

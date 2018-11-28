@@ -14,10 +14,15 @@ const Main = props =>  (
         <TaskSummaryPanel dispatch={props.dispatch} />
       </aside>
       <main className="Main__main">
-        <TaskDetailPanel dispatch={props.dispatch} />
+        <TaskDetailPanel master={props.master} children={[props.rootId]} dispatch={props.dispatch} />
       </main>
     </div>
   </div>
 );
+
+Main.defaultProps = {
+  master: {},
+  rootId: ''
+};
 
 export default Main;
