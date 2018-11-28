@@ -14,12 +14,14 @@
     width: 1rem;
     height: 1rem;
     margin: 0 .25rem;
-    border: solid 2px hsla(0, 0%, 0%, .1);
+    border: solid 2px hsla(270, 100%, 65%, 1);
     border-radius: 50%;
+    background-color: hsla(270, 100%, 65%, .2);
     cursor: pointer;
 
     &:checked {
-      background: hsla(0, 0%, 0%, .4);
+      border-color: hsla(0, 0%, 0%, .2);
+      background-color: hsla(0, 0%, 0%, .1);
     }
   }
 
