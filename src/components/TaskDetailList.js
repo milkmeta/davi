@@ -3,15 +3,13 @@ import './TaskDetailList.scss';
 import TaskDetailItem from './TaskDetailItem';
 
 const TaskDetailList = props => (
-  <div className="TaskDetailList">
-    <ul className="TaskDetailList__list">
-      {props.children.map(id => (
-        <li key={id}>
-          <TaskDetailItem master={props.master} id={id} dispatch={props.dispatch} />
-        </li>
-      ))}
-    </ul>
-  </div>
+  <ul className="TaskDetailList">
+    {props.children.map(id => (
+      <li key={id}>
+        <TaskDetailItem master={props.master} id={id} dispatch={props.dispatch} />
+      </li>
+    ))}
+  </ul>
 );
 
 TaskDetailList.defaultProps = {

@@ -20,15 +20,13 @@ const TaskSummaryList = props => {
   // TODO: ID走査時の無限ループの阻止
 
   return (
-    <div className="TaskSummaryList">
-      <ul className="TaskSummaryList__list">
-        {starredIds.map(id => (
-          <li key={id}>
-            <TaskSummaryItem master={props.master} id={id} dispatch={props.dispatch} />
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul className="TaskSummaryList">
+      {starredIds.map(id => (
+        <li key={id}>
+          <TaskSummaryItem master={props.master} id={id} dispatch={props.dispatch} />
+        </li>
+      ))}
+    </ul>
   );
 };
 
