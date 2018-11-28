@@ -3,22 +3,21 @@ import './TaskSummaryPanel.scss';
 import TaskSummaryItem from './TaskSummaryItem';
 
 const TaskSummaryPanel = props => {
-  let starredIds = [];
-  const scanStarredIds = (id) => {
-    const item = props.master[id];
-    console.log(item.title);
-    if (item.starred) {
-      starredIds.push(id);
-    }
-    if (item.children) {
-      item.children.forEach(v => {
-        scanStarredIds(v);
-      });
-    }
+  const scanStarredIds = (ids) => {
+    let foundIds = [];
+    ids.forEach(id => {
+      const item = props.master[id];
+      if (item.starred) {
+        foundIds.push(id);
+      }
+      if (item.children) {
+        Array.prototype.push.apply(foundIds, scanStarredIds(item.children));
+      }
+    });
+    return foundIds;
   }
-  props.children.forEach(v => {
-    scanStarredIds(v);
-  });
+  const starredIds = scanStarredIds(props.children);
+  // TODO: ID走査時の無限ループの阻止
 
   return (
     <div className="TaskSummaryPanel">
