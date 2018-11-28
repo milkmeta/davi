@@ -4,7 +4,7 @@
   &__title {
     flex-grow: 1;
     overflow: hidden;
-    padding: .5rem 0;
+    padding: .5rem .25rem;
     border: none;
     background-color: transparent;
     color: inherit;
@@ -13,7 +13,7 @@
 
   &__button {
     flex-shrink: 0;
-    padding: 0 .5rem;
+    padding: 0 .25rem;
     border: none;
     background: none;
     color: hsla(0, 0%, 0%, .2);
