@@ -6,16 +6,23 @@
     }
   }
 
-  &__text {
+  %__text {
+    overflow: hidden;
     padding: .5rem 0;
     border: none;
     background-color: transparent;
+    color: inherit;
+  }
 
-    &--title {
-      flex-grow: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+  &__title {
+    @extend %__text;
+    flex-grow: 1;
+    text-overflow: ellipsis;
+  }
+
+  &__date {
+    @extend %__text;
+    flex-shrink: 0;
   }
 
   &__button {
@@ -23,12 +30,29 @@
     padding: 0 .5rem;
     border: none;
     background: none;
-    color: hsla(0, 0%, 0%, .1);
+    color: hsla(0, 0%, 0%, .2);
     font-weight: bold;
     cursor: pointer;
   }
 
   &__children {
     padding-left: 1.5rem;
+  }
+
+  &[data-starred="true"] {
+    .TaskDetailItem {
+      &__title {
+        font-weight: bold;
+      }
+    }
+  }
+
+  &[data-checked="true"] {
+    .TaskDetailItem {
+      &__title,
+      &__date {
+        color: hsla(0, 0%, 0%, .2);
+      }
+    }
   }
 }

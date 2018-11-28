@@ -19,11 +19,13 @@ class App extends MicroContainer {
         },
         task01: {
           title: 'Task 1',
-          date: '2019-01-01'
+          date: '2019-01-01',
+          starred: true
         },
         task02: {
           title: 'Task 2',
-          date: '2019-02-01'
+          date: '2019-02-01',
+          checked: true
         },
         task03: {
           title: 'Task 3',
