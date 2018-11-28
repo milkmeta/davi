@@ -39,20 +39,16 @@
     padding-left: 1.5rem;
   }
 
-  &[data-starred="true"] {
-    .TaskDetailItem {
-      &__title {
-        font-weight: bold;
-      }
+  &[data-starred="true"] > &__self {
+    .TaskDetailItem__title {
+      font-weight: bold;
     }
   }
 
-  &[data-checked="true"] {
-    .TaskDetailItem {
-      &__title,
-      &__date {
-        color: hsla(0, 0%, 0%, .2);
-      }
+  &[data-checked="true"] > &__self {
+    .TaskDetailItem__title,
+    .TaskDetailItem__date {
+      color: hsla(0, 0%, 0%, .2);
     }
   }
 }
