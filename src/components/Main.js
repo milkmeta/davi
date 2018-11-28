@@ -3,7 +3,17 @@ import './Main.css';
 
 const Main = props =>  (
   <div className="Main">
-    <h1>Davi</h1>
+    <header className="header">
+      Header
+    </header>
+    <div className="body">
+      <aside className="aside">
+        aside
+      </aside>
+      <main className="main">
+        main
+      </main>
+    </div>
   </div>
 );
 

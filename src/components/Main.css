@@ -1,2 +1,24 @@
 .Main {
+  display: flex;
+  flex-direction: column;
+  color: hsla(0, 0%, 0%, .6);
+  line-height: 1.5;
+  user-select: none;
+}
+
+.Main > .header {
+  flex-shrink: 0;
+}
+
+.Main > .body {
+  display: flex;
+  flex-grow: 1;
+}
+
+.Main > .body > .aside {
+  flex-basis: 15rem;
+}
+
+.Main > .body > .main {
+  flex-grow: 1;
 }
