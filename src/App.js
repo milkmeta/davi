@@ -109,11 +109,19 @@ class App extends MicroContainer {
   }
 
   todoChangeTitle(itemInfo, value) {
-    console.log(itemInfo);
+    this.setState(state => {
+      const item = state.master[itemInfo.id];
+      item.title = value;
+      return state;
+    });
   }
 
   todoChangeDate(itemInfo, value) {
-    console.log(itemInfo);
+    this.setState(state => {
+      const item = state.master[itemInfo.id];
+      item.date = value;
+      return state;
+    });
   }
 
   todoChangeStar(itemInfo) {
