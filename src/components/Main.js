@@ -4,6 +4,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import Header from './Header';
 import TaskSummaryList from './TaskSummaryList';
 import TaskDetailList from './TaskDetailList';
+import TaskDetailPopup from './TaskDetailPopup';
 import './Main.scss';
 
 library.add(fas);
@@ -19,6 +20,7 @@ const Main = props => (
       </aside>
       <main className="Main__main">
         <TaskDetailList master={props.master} children={[props.rootId]} dispatch={props.dispatch} />
+        <TaskDetailPopup display={props.popup} dispatch={props.dispatch}/>
       </main>
     </div>
   </div>

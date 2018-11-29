@@ -78,6 +78,11 @@ const defaultState = {
     task04_02: {
       title: 'Task 04_02'
     }
+  },
+  popup: {
+    show: false,
+    mouseX: 0,
+    mouseY: 0
   }
 };
 const lastState =  JSON.parse(localStorage.getItem(localStorageName));
@@ -96,7 +101,8 @@ class App extends MicroContainer {
       todoChangeDate: this.todoChangeDate,
       todoChangeStatus: this.todoChangeStatus,
       todoChangeStar: this.todoChangeStar,
-      todoChangeArchive: this.todoChangeArchive
+      todoChangeArchive: this.todoChangeArchive,
+      todoDetailMenu: this.todoDetailMenu
     });
   }
 
@@ -138,6 +144,19 @@ class App extends MicroContainer {
 
   todoChangeArchive(id) {
     console.log(id);
+  }
+
+  todoDetailMenu(id, pageX, pageY) {
+    this.setState(state => {
+      const visibility = (id === state.popup.id) ? !state.popup.show : true;
+      state.popup = {
+        show: visibility,
+        id,
+        pageX,
+        pageY
+      }
+      return state;
+    });
   }
 
   componentWillUpdate(nextProps, nextState) {
