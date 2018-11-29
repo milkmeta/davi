@@ -3,11 +3,11 @@ import './TaskDetailPopup.scss';
 
 const TaskDetailPopup = props => {
   const popupName = 'TaskDetailPopup';
-  const { name, id, show, pageX, pageY} = props.display;
+  const { name, itemId, show, pageX, pageY} = props.display;
   const itemDefault = {
     isRoot: false
   };
-  const itemRaw = props.master[id];
+  const itemRaw = props.master[itemId];
   const item = Object.assign(itemDefault, itemRaw);
 
   return (
@@ -16,24 +16,24 @@ const TaskDetailPopup = props => {
       top: pageY
     }}>
       <li><button disabled={item.isRoot} onClick={e => {
-        props.dispatch('todoAddSibling', id);
-        props.dispatch('todoPopup', id, popupName, e)
+        props.dispatch('todoAddSibling', itemId);
+        props.dispatch('todoPopup', itemId, popupName, e)
       }}>タスクを追加</button></li>
       <li><button onClick={e => {
-        props.dispatch('todoAddChild', id);
-        props.dispatch('todoPopup', id, popupName, e)
+        props.dispatch('todoAddChild', itemId);
+        props.dispatch('todoPopup', itemId, popupName, e)
       }}>サブタスクを追加</button></li>
       <li><button onClick={e => {
-        props.dispatch('todoChangeStar', id);
-        props.dispatch('todoPopup', id, popupName, e)
+        props.dispatch('todoChangeStar', itemId);
+        props.dispatch('todoPopup', itemId, popupName, e)
       }}>スター</button></li>
       <li><button disabled={item.isRoot} onClick={e => {
-        props.dispatch('todoChangeArchive', id);
-        props.dispatch('todoPopup', id, popupName, e)
+        props.dispatch('todoChangeArchive', itemId);
+        props.dispatch('todoPopup', itemId, popupName, e)
       }}>アーカイブ</button></li>
       <li><button disabled={item.isRoot} onClick={e => {
-        props.dispatch('todoDelete', id);
-        props.dispatch('todoPopup', id, popupName, e)
+        props.dispatch('todoDelete', itemId);
+        props.dispatch('todoPopup', itemId, popupName, e)
       }}>削除</button></li>
     </ul>
   );

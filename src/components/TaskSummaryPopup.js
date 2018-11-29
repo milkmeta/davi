@@ -3,11 +3,11 @@ import './TaskSummaryPopup.scss';
 
 const TaskSummaryPopup = props => {
   const popupName = 'TaskSummaryPopup';
-  const { name, id, show, pageX, pageY} = props.display;
+  const { name, itemId, show, pageX, pageY} = props.display;
   const itemDefault = {
     isRoot: false
   };
-  const itemRaw = props.master[id];
+  const itemRaw = props.master[itemId];
   const item = Object.assign(itemDefault, itemRaw);
 
   return (
@@ -16,16 +16,16 @@ const TaskSummaryPopup = props => {
       top: pageY
     }}>
       <li><button onClick={e => {
-        props.dispatch('todoChangeStar', id);
-        props.dispatch('todoPopup', id, popupName, e)
+        props.dispatch('todoChangeStar', itemId);
+        props.dispatch('todoPopup', itemId, popupName, e)
       }}>スター</button></li>
       <li><button disabled={item.isRoot} onClick={e => {
-        props.dispatch('todoChangeArchive', id);
-        props.dispatch('todoPopup', id, popupName, e)
+        props.dispatch('todoChangeArchive', itemId);
+        props.dispatch('todoPopup', itemId, popupName, e)
       }}>アーカイブ</button></li>
       <li><button disabled={item.isRoot} onClick={e => {
-        props.dispatch('todoDelete', id);
-        props.dispatch('todoPopup', id, popupName, e)
+        props.dispatch('todoDelete', itemId);
+        props.dispatch('todoPopup', itemId, popupName, e)
       }}>削除</button></li>
     </ul>
   );

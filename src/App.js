@@ -11,7 +11,7 @@ const defaultState = {
       title: 'Root',
       starred: true,
       isRoot: true,
-      children: [
+      childIds: [
         'task01',
         'task02',
         'task03',
@@ -21,8 +21,8 @@ const defaultState = {
     task01: {
       title: 'Task 01',
       date: '2019-01-01',
-      parent: 'root',
-      children: [
+      parentId: 'root',
+      childIds: [
         'task01_01',
         'task01_02'
       ]
@@ -30,17 +30,17 @@ const defaultState = {
     task01_01: {
       title: 'Task 01_01',
       date: '2019-01-01',
-      parent: 'task01'
+      parentId: 'task01'
     },
     task01_02: {
       title: 'Task 01_02',
-      parent: 'task01'
+      parentId: 'task01'
     },
     task02: {
       title: 'Task 02',
       starred: true,
-      parent: 'root',
-      children: [
+      parentId: 'root',
+      childIds: [
         'task02_01',
         'task02_02'
       ]
@@ -48,17 +48,17 @@ const defaultState = {
     task02_01: {
       title: 'Task 02_01',
       starred: true,
-      parent: 'task02'
+      parentId: 'task02'
     },
     task02_02: {
       title: 'Task 02_02',
-      parent: 'task02'
+      parentId: 'task02'
     },
     task03: {
       title: 'Task 03',
       checked: true,
-      parent: 'root',
-      children: [
+      parentId: 'root',
+      childIds: [
         'task03_01',
         'task03_02'
       ]
@@ -66,18 +66,18 @@ const defaultState = {
     task03_01: {
       title: 'Task 03_01',
       checked: true,
-      parent: 'task03'
+      parentId: 'task03'
     },
     task03_02: {
       title: 'Task 03_02',
-      parent: 'task03'
+      parentId: 'task03'
     },
     task04: {
       title: 'Task 04',
       date: '2019-04-01',
       archived: true,
-      parent: 'root',
-      children: [
+      parentId: 'root',
+      childIds: [
         'task04_01',
         'task04_02'
       ]
@@ -85,16 +85,16 @@ const defaultState = {
     task04_01: {
       title: 'Task 04_01',
       archived: true,
-      parent: 'task04'
+      parentId: 'task04'
     },
     task04_02: {
       title: 'Task 04_02',
-      parent: 'task04'
+      parentId: 'task04'
     }
   },
   popup: {
     name: '',
-    id: '',
+    itemId: '',
     show: false,
     mouseX: 0,
     mouseY: 0
@@ -123,23 +123,23 @@ class App extends MicroContainer {
     });
   }
 
-  todoAddSibling(siblingId) {
+  todoAddSibling(eventId) {
     this.setState(state => {
-      const sibling = state.master[siblingId]
-      if (sibling.isRoot) {
+      const eventItem = state.master[eventId]
+      if (eventItem.isRoot) {
         return;
       }
-      const id = sibling.parent;
+      const id = eventItem.parentId;
       const item = state.master[id];
       const uuid = uuidv4();
       state.master[uuid] = {
         title: '',
-        parent: [id]
+        parentId: [id]
       };
-      if (!item.children) {
-        item.children = [];
+      if (!item.childIds) {
+        item.childIds = [];
       }
-      item.children.push(uuid);
+      item.childIds.push(uuid);
       return state;
     });
   }
@@ -150,12 +150,12 @@ class App extends MicroContainer {
       const uuid = uuidv4();
       state.master[uuid] = {
         title: '',
-        parent: [id]
+        parentId: [id]
       };
-      if (!item.children) {
-        item.children = [];
+      if (!item.childIds) {
+        item.childIds = [];
       }
-      item.children.push(uuid);
+      item.childIds.push(uuid);
       return state;
     });
   }
@@ -167,9 +167,9 @@ class App extends MicroContainer {
     }
     this.setState(state => {
       const child = state.master[id];
-      const item = state.master[child.parent];
-      item.children = item.children.filter(childItem => childItem !== id);
-      child.parent = null;
+      const item = state.master[child.parentId];
+      item.childIds = item.childIds.filter(childItem => childItem !== id);
+      child.parentId = null;
       return state;
     });
   }
@@ -221,10 +221,10 @@ class App extends MicroContainer {
     e.persist();
     const offsetParent = e.target.offsetParent;
     this.setState(state => {
-      const visibility = (state.popup.name === name && id === state.popup.id) ? !state.popup.show : true;
+      const visibility = (state.popup.name === name && id === state.popup.itemId) ? !state.popup.show : true;
       state.popup = {
         name,
-        id,
+        itemId: id,
         show: visibility,
         pageX: e.pageX - offsetParent.offsetLeft,
         pageY: e.pageY - offsetParent.offsetTop
