@@ -12,7 +12,7 @@ const TaskSummaryItem = props => {
   return (
     <div className="TaskSummaryItem" data-checked={item.checked}>
       <input type="text" className="TaskSummaryItem__title" value={item.title} onChange={e => props.dispatch('todoChangeTitle', props.id, e.target.value)} />
-      <button className="TaskSummaryItem__button"><FontAwesomeIcon icon={['fas', 'ellipsis-h']} /></button>
+      <button className="TaskSummaryItem__button" onClick={e => props.dispatch('todoPopup', props.id, 'todoSummaryPopup', e)}><FontAwesomeIcon icon={['fas', 'ellipsis-h']} /></button>
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import Header from './Header';
 import TaskSummaryList from './TaskSummaryList';
+import TaskSummaryPopup from './TaskSummaryPopup';
 import TaskDetailList from './TaskDetailList';
 import TaskDetailPopup from './TaskDetailPopup';
 import './Main.scss';
@@ -18,6 +19,7 @@ const Main = props => (
     <div className="Main__body">
       <aside className="Main__aside">
         <TaskSummaryList master={props.master} children={[props.rootId]} dispatch={props.dispatch} />
+        <TaskSummaryPopup display={props.popup} dispatch={props.dispatch}/>
       </aside>
       <main className="Main__main">
         <TaskDetailList master={props.master} children={[props.rootId]} dispatch={props.dispatch} />

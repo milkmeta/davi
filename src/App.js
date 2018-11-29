@@ -80,6 +80,8 @@ const defaultState = {
     }
   },
   popup: {
+    name: '',
+    id: '',
     show: false,
     mouseX: 0,
     mouseY: 0
@@ -102,7 +104,7 @@ class App extends MicroContainer {
       todoChangeStatus: this.todoChangeStatus,
       todoChangeStar: this.todoChangeStar,
       todoChangeArchive: this.todoChangeArchive,
-      todoDetailMenu: this.todoDetailMenu,
+      todoPopup: this.todoPopup,
       windowResize: this.windowResize
     });
   }
@@ -147,14 +149,15 @@ class App extends MicroContainer {
     console.log(id);
   }
 
-  todoDetailMenu(id, e) {
+  todoPopup(id, name, e) {
     e.persist();
     const offsetParent = e.target.offsetParent;
     this.setState(state => {
-      const visibility = (id === state.popup.id) ? !state.popup.show : true;
+      const visibility = (state.popup.name === name && id === state.popup.id) ? !state.popup.show : true;
       state.popup = {
-        show: visibility,
+        name,
         id,
+        show: visibility,
         pageX: e.pageX - offsetParent.offsetLeft,
         pageY: e.pageY - offsetParent.offsetTop
       }

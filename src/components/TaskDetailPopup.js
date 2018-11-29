@@ -2,7 +2,7 @@ import React from 'react';
 import './TaskDetailPopup.scss';
 
 const TaskDetailPopup = props => (
-  <ul className="TaskDetailPopup" data-visible={props.display.show} style={{
+  <ul className="TaskDetailPopup" data-visible={props.display.name === 'todoDetailPopup' && props.display.show} style={{
     left: props.display.pageX,
     top: props.display.pageY
   }}>
