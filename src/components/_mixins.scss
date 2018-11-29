@@ -30,8 +30,16 @@
   list-style: none;
 }
 
+@mixin reset-background-color {
+  background-color: transparent;
+}
+
 @mixin reset-color {
   color: inherit;
+}
+
+@mixin reset-text-align {
+  text-align: none;
 }
 
 @mixin reset-text-decoration {

@@ -2,21 +2,19 @@
 @import "./mixins";
 
 .TaskDetailPopup {
+  @include reset-list;
   display: none;
   position: absolute;
   min-width: 10rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
   background-color: $color-white-02;
 
   button {
+    @include reset-border;
+    @include reset-background-color;
+    @include reset-text-align;
     width: 100%;
     padding: .25rem .5rem;
-    border: none;
-    background-color: transparent;
     font-size: .875rem;
-    text-align: inherit;
   }
 
   &[data-visible="true"] {

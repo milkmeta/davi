@@ -2,9 +2,10 @@
 @import "./mixins";
 
 .TaskSummaryList {
-  margin: 0;
-  padding: 1rem {
-    right: 0;
+  @include reset-list;
+  padding: {
+    top: 1rem;
+    bottom: 1rem;
+    left: 1rem;
   }
-  list-style: none;
 }
