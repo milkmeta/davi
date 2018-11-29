@@ -26,17 +26,17 @@
   }
 
   %__text {
-    overflow: hidden;
     padding: .5rem .25rem;
     border: none;
     background-color: transparent;
     color: inherit;
-    text-overflow: ellipsis;
   }
 
   &__title {
     @extend %__text;
+    overflow: hidden;
     width: 100%;
+    text-overflow: ellipsis;
   }
 
   &__date {
