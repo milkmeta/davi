@@ -4,7 +4,7 @@ import './TaskDetailList.scss';
 
 const TaskDetailList = props => (
   <ul className="TaskDetailList">
-    {props.childIds.map(id => (
+    {props.childrenIds.map(id => (
       <li key={id}>
         <TaskDetailItem master={props.master} id={id} dispatch={props.dispatch} />
       </li>
@@ -14,7 +14,7 @@ const TaskDetailList = props => (
 
 TaskDetailList.defaultProps = {
   master: {},
-  childIds: []
+  childrenIds: []
 };
 
 export default TaskDetailList;

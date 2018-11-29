@@ -11,7 +11,7 @@ const defaultState = {
       title: 'Root',
       starred: true,
       isRoot: true,
-      childIds: [
+      childrenIds: [
         'task01',
         'task02',
         'task03',
@@ -22,7 +22,7 @@ const defaultState = {
       title: 'Task 01',
       date: '2019-01-01',
       parentId: 'root',
-      childIds: [
+      childrenIds: [
         'task01_01',
         'task01_02'
       ]
@@ -40,7 +40,7 @@ const defaultState = {
       title: 'Task 02',
       starred: true,
       parentId: 'root',
-      childIds: [
+      childrenIds: [
         'task02_01',
         'task02_02'
       ]
@@ -58,7 +58,7 @@ const defaultState = {
       title: 'Task 03',
       checked: true,
       parentId: 'root',
-      childIds: [
+      childrenIds: [
         'task03_01',
         'task03_02'
       ]
@@ -77,7 +77,7 @@ const defaultState = {
       date: '2019-04-01',
       archived: true,
       parentId: 'root',
-      childIds: [
+      childrenIds: [
         'task04_01',
         'task04_02'
       ]
@@ -136,10 +136,10 @@ class App extends MicroContainer {
         title: '',
         parentId: [id]
       };
-      if (!item.childIds) {
-        item.childIds = [];
+      if (!item.childrenIds) {
+        item.childrenIds = [];
       }
-      item.childIds.push(uuid);
+      item.childrenIds.push(uuid);
       return state;
     });
   }
@@ -152,10 +152,10 @@ class App extends MicroContainer {
         title: '',
         parentId: [id]
       };
-      if (!item.childIds) {
-        item.childIds = [];
+      if (!item.childrenIds) {
+        item.childrenIds = [];
       }
-      item.childIds.push(uuid);
+      item.childrenIds.push(uuid);
       return state;
     });
   }
@@ -168,7 +168,7 @@ class App extends MicroContainer {
     this.setState(state => {
       const child = state.master[id];
       const item = state.master[child.parentId];
-      item.childIds = item.childIds.filter(childItem => childItem !== id);
+      item.childrenIds = item.childrenIds.filter(childItem => childItem !== id);
       child.parentId = null;
       return state;
     });

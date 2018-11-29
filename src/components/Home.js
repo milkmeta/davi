@@ -18,11 +18,11 @@ const Home = props => (
     </header>
     <div className="Home__body">
       <aside className="Home__aside">
-        <TaskSummaryList master={props.master} childIds={[props.rootId]} dispatch={props.dispatch} />
+        <TaskSummaryList master={props.master} childrenIds={[props.rootId]} dispatch={props.dispatch} />
         <TaskSummaryPopup master={props.master} display={props.popup} dispatch={props.dispatch}/>
       </aside>
       <main className="Home__main">
-        <TaskDetailList master={props.master} childIds={[props.rootId]} dispatch={props.dispatch} />
+        <TaskDetailList master={props.master} childrenIds={[props.rootId]} dispatch={props.dispatch} />
         <TaskDetailPopup master={props.master} display={props.popup} dispatch={props.dispatch}/>
       </main>
     </div>
