@@ -100,44 +100,44 @@ class App extends MicroContainer {
     });
   }
 
-  todoAdd(itemInfo) {
-    console.log(itemInfo);
+  todoAdd(id) {
+    console.log(id);
   }
 
-  todoDelete(itemInfo) {
-    console.log(itemInfo);
+  todoDelete(id) {
+    console.log(id);
   }
 
-  todoChangeTitle(itemInfo, value) {
+  todoChangeTitle(id, value) {
     this.setState(state => {
-      const item = state.master[itemInfo.id];
+      const item = state.master[id];
       item.title = value;
       return state;
     });
   }
 
-  todoChangeDate(itemInfo, value) {
+  todoChangeDate(id, value) {
     this.setState(state => {
-      const item = state.master[itemInfo.id];
+      const item = state.master[id];
       item.date = value;
       return state;
     });
   }
 
-  todoChangeStar(itemInfo) {
-    console.log(itemInfo);
+  todoChangeStar(id) {
+    console.log(id);
   }
 
-  todoChangeStatus(itemInfo) {
+  todoChangeStatus(id) {
     this.setState(state => {
-      const item = state.master[itemInfo.id];
+      const item = state.master[id];
       item.checked = !item.checked;
       return state;
     });
   }
 
-  todoChangeArchive(itemInfo) {
-    console.log(itemInfo);
+  todoChangeArchive(id) {
+    console.log(id);
   }
 
   componentWillUpdate(nextProps, nextState) {
