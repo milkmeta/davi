@@ -1,4 +1,5 @@
 import React from 'react';
+import EventListener from 'react-event-listener';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import Header from './Header';
@@ -23,6 +24,7 @@ const Main = props => (
         <TaskDetailPopup display={props.popup} dispatch={props.dispatch}/>
       </main>
     </div>
+    <EventListener target="window" onResize={e => props.dispatch('windowResize')} />
   </div>
 );
 

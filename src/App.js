@@ -102,7 +102,8 @@ class App extends MicroContainer {
       todoChangeStatus: this.todoChangeStatus,
       todoChangeStar: this.todoChangeStar,
       todoChangeArchive: this.todoChangeArchive,
-      todoDetailMenu: this.todoDetailMenu
+      todoDetailMenu: this.todoDetailMenu,
+      windowResize: this.windowResize
     });
   }
 
@@ -157,6 +158,13 @@ class App extends MicroContainer {
         pageX: e.pageX - offsetParent.offsetLeft,
         pageY: e.pageY - offsetParent.offsetTop
       }
+      return state;
+    });
+  }
+
+  windowResize() {
+    this.setState(state => {
+      state.popup.show = false;
       return state;
     });
   }
