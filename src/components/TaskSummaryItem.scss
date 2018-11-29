@@ -16,9 +16,13 @@
     flex-shrink: 0;
     padding: 0 .25rem;
     border: none;
-    background: none;
+    background-color: transparent;
     color: hsla(0, 0%, 0%, .2);
     font-weight: bold;
     cursor: pointer;
+
+    svg {
+      pointer-events: none;
+    }
   }
 }

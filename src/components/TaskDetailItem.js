@@ -4,17 +4,26 @@ import TaskDetailList from './TaskDetailList';
 import './TaskDetailItem.scss';
 
 const TaskDetailItem = props => {
-  const item = props.master[props.id];
+  const itemDefault = {
+    title: '',
+    date: '',
+    starred: false,
+    checked: false,
+    archived: false
+  };
+  const itemRaw = props.master[props.id];
+  const item = Object.assign(itemDefault, itemRaw);
+
   if (item.archived) {
     return false;
   }
   return (
     <div className="TaskDetailItem" data-starred={item.starred} data-checked={item.checked}>
       <div className="TaskDetailItem__self">
-        <input type="checkbox" className="TaskDetailItem__checkbox" defaultChecked={item.checked} />
-        <input type="text" className="TaskDetailItem__title" defaultValue={item.title} />
-        <input type="text" className="TaskDetailItem__date" defaultValue={item.date} />
-        <button className="TaskDetailItem__button"><FontAwesomeIcon icon={['fas', 'ellipsis-h']} /></button>
+        <input type="checkbox" className="TaskDetailItem__checkbox" checked={item.checked} onChange={() => props.dispatch('todoChangeStatus', props.id)} />
+        <input type="text" className="TaskDetailItem__title" value={item.title} onChange={e => props.dispatch('todoChangeTitle', props.id, e.target.value)} />
+        <input type="date" className="TaskDetailItem__date" value={item.date} onChange={e => props.dispatch('todoChangeDate', props.id, e.target.value)} />
+        <button className="TaskDetailItem__button" onClick={e => props.dispatch('todoPopup', props.id, 'TaskDetailPopup', e)}><FontAwesomeIcon icon={['fas', 'ellipsis-h']} /></button>
       </div>
       <div className="TaskDetailItem__children">
         {item.children ? <TaskDetailList master={props.master} children={item.children} dispatch={props.dispatch} /> : null}
