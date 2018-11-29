@@ -1,23 +1,39 @@
+@import "./variables";
+@import "./mixins";
+
 .Header {
   display: flex;
   align-items: center;
   padding: .5rem 1rem;
-  background-color: hsla(270, 100%, 65%, 1);
-  color: hsla(0, 0%, 100%, 1);
+  background-color: $color-theme-01;
+  color: $color-white-01;
   font-weight: bold;
 
   &__title {
-    margin: 0;
+    @include reset-margin;
     font-size: 1.5rem;
   }
 
-  &__about {
-    margin: 0 {
-      left: auto;
+  &__link {
+    @include reset-list;
+    display: flex;
+    margin-left: auto;
+
+    li {
+      margin-left: 1rem;
+    }
+
+    button {
+      @include reset-padding;
+      @include reset-border;
+      @include reset-background-color;
+      @include reset-color;
+      @include reset-font-weight;
+      text-decoration: underline;
     }
 
     a {
-      color: inherit;
+      @include reset-color;
     }
   }
 }

@@ -1,7 +1,9 @@
+@import "./variables";
+@import "./mixins";
+
 .TaskDetailList {
-  margin: 0;
+  @include reset-list;
   padding: 1rem;
-  list-style: none;
 
   & & {
     padding: 0;

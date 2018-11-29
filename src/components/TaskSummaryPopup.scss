@@ -1,19 +1,22 @@
+@import "./variables";
+@import "./mixins";
+
 .TaskSummaryPopup {
+  @include reset-list;
   display: none;
   position: absolute;
   min-width: 10rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  background-color: hsla(0, 0%, 0%, .05);
+  padding: .25rem 0;
+  background-color: $color-white-02;
+  font-size: .875rem;
 
   button {
+    @include reset-border;
+    @include reset-background-color;
+    @include reset-color;
+    @include reset-text-align;
     width: 100%;
     padding: .25rem .5rem;
-    border: none;
-    background-color: transparent;
-    font-size: .875rem;
-    text-align: inherit;
   }
 
   &[data-visible="true"] {

@@ -4,7 +4,11 @@ import './Header.scss';
 const Header = props => (
   <div className="Header">
     <h1 className="Header__title">Davi</h1>
-    <p className="Header__about"><a href="https://github.com/milkmeta/davi" target="_blank" rel="noopener noreferrer">milkmeta/davi</a></p>
+    <ul className="Header__link">
+      <li><button onClick={() => props.dispatch('todoLoadState', 'sample')}>Load sample data</button></li>
+      <li><button onClick={() => props.dispatch('todoLoadState', 'reset')}>Reset</button></li>
+      <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/milkmeta/davi">milkmeta/davi</a></li>
+    </ul>
   </div>
 );
 

@@ -10,13 +10,13 @@ const TaskSummaryList = props => {
       if (item.starred) {
         foundIds.push(id);
       }
-      if (item.children) {
-        foundIds.push(...scanStarredIds(item.children));
+      if (item.childrenIds) {
+        foundIds.push(...scanStarredIds(item.childrenIds));
       }
     });
     return foundIds;
   };
-  const starredIds = scanStarredIds(props.children);
+  const starredIds = scanStarredIds(props.childrenIds);
   // TODO: ID走査時の無限ループの阻止
 
   return (
@@ -32,7 +32,7 @@ const TaskSummaryList = props => {
 
 TaskSummaryList.defaultProps = {
   master: {},
-  children: []
+  childrenIds: []
 };
 
 export default TaskSummaryList;

@@ -1,8 +1,11 @@
+@import "./variables";
+@import "./mixins";
+
 .TaskDetailItem {
   &__self {
     display: flex;
     overflow: hidden;
-    border: 1px hsla(0, 0%, 0%, .1) {
+    border: 1px $color-gray-02 {
       bottom-style: solid;
     }
   }
@@ -14,22 +17,23 @@
     width: 1rem;
     height: 1rem;
     margin: 0 .25rem;
-    border: solid 2px hsla(270, 100%, 65%, 1);
-    border-radius: 50%;
-    background-color: hsla(270, 100%, 65%, .2);
+    border: solid 2px $color-theme-01 {
+      radius: 50%;
+    }
+    background-color: $color-theme-02;
     cursor: pointer;
 
     &:checked {
-      border-color: hsla(0, 0%, 0%, .2);
-      background-color: hsla(0, 0%, 0%, .1);
+      border-color: $color-gray-01;
+      background-color: $color-white-02;
     }
   }
 
   %__text {
+    @include reset-border;
+    @include reset-background-color;
+    @include reset-color;
     padding: .5rem .25rem;
-    border: none;
-    background-color: transparent;
-    color: inherit;
   }
 
   &__title {
@@ -45,11 +49,11 @@
   }
 
   &__button {
+    @include reset-border;
+    @include reset-background-color;
     flex-shrink: 0;
     padding: 0 .25rem;
-    border: none;
-    background-color: transparent;
-    color: hsla(0, 0%, 0%, .2);
+    color: $color-gray-01;
     font-weight: bold;
     cursor: pointer;
 
@@ -71,7 +75,7 @@
   &[data-checked="true"] > &__self {
     .TaskDetailItem__title,
     .TaskDetailItem__date {
-      color: hsla(0, 0%, 0%, .2);
+      color: $color-gray-01;
     }
   }
 

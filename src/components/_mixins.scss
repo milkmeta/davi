@@ -1,0 +1,64 @@
+// ==========================================================================
+// Reset default styles
+// ==========================================================================
+
+@mixin reset-margin {
+  margin: 0;
+}
+
+@mixin reset-padding {
+  padding: 0;
+}
+
+@mixin reset-border {
+  border: none;
+}
+
+@mixin reset-outline {
+  outline: none;
+}
+
+@mixin reset-font-size {
+  font-size: inherit;
+}
+
+@mixin reset-font-weight {
+  font-weight: inherit;
+}
+
+@mixin reset-list-style {
+  list-style: none;
+}
+
+@mixin reset-background-color {
+  background-color: transparent;
+}
+
+@mixin reset-color {
+  color: inherit;
+}
+
+@mixin reset-text-align {
+  text-align: inherit;
+}
+
+@mixin reset-text-decoration {
+  text-decoration: none;
+}
+
+@mixin reset-heading {
+  @include reset-margin;
+  @include reset-font-size;
+  @include reset-font-weight;
+}
+
+@mixin reset-list {
+  @include reset-margin;
+  @include reset-padding;
+  @include reset-list-style;
+}
+
+@mixin reset-link {
+  @include reset-color;
+  @include reset-text-decoration;
+}

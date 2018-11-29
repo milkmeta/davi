@@ -26,7 +26,7 @@ const TaskDetailItem = props => {
         <button className="TaskDetailItem__button" onClick={e => props.dispatch('todoPopup', props.id, 'TaskDetailPopup', e)}><FontAwesomeIcon icon={['fas', 'ellipsis-h']} /></button>
       </div>
       <div className="TaskDetailItem__children">
-        {item.children ? <TaskDetailList master={props.master} children={item.children} dispatch={props.dispatch} /> : null}
+        {item.childrenIds ? <TaskDetailList master={props.master} childrenIds={item.childrenIds} dispatch={props.dispatch} /> : null}
       </div>
     </div>
   );
