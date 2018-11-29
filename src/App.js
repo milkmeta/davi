@@ -134,7 +134,11 @@ class App extends MicroContainer {
   }
 
   todoChangeStar(id) {
-    console.log(id);
+    this.setState(state => {
+      const item = state.master[id];
+      item.starred = !item.starred;
+      return state;
+    });
   }
 
   todoChangeStatus(id) {
@@ -146,7 +150,11 @@ class App extends MicroContainer {
   }
 
   todoChangeArchive(id) {
-    console.log(id);
+    this.setState(state => {
+      const item = state.master[id];
+      item.archived = !item.archived;
+      return state;
+    });
   }
 
   todoPopup(id, name, e) {
