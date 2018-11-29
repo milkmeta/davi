@@ -4,14 +4,14 @@ import './TaskSummaryList.scss';
 
 const TaskSummaryList = props => {
   const scanStarredIds = (ids) => {
-    let foundIds = [];
+    const foundIds = [];
     ids.forEach(id => {
       const item = props.master[id];
       if (item.starred) {
         foundIds.push(id);
       }
       if (item.children) {
-        Array.prototype.push.apply(foundIds, scanStarredIds(item.children));
+        foundIds.push(...scanStarredIds(item.children));
       }
     });
     return foundIds;
