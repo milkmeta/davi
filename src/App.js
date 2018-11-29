@@ -1,7 +1,7 @@
 import React from 'react';
 import MicroContainer from 'react-micro-container';
 import uuidv4 from 'uuid/v4';
-import Main from './components/Main';
+import Home from './components/Home';
 
 const localStorageName = 'davi';
 const defaultState = {
@@ -247,7 +247,7 @@ class App extends MicroContainer {
 
   render() {
     return (
-      <Main dispatch={this.dispatch} {...this.state} />
+      <Home dispatch={this.dispatch} {...this.state} />
     );
   }
 }
