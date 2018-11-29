@@ -110,7 +110,18 @@ class App extends MicroContainer {
   }
 
   todoAdd(id) {
-    console.log(id);
+    this.setState(state => {
+      const item = state.master[id];
+      const uuid = uuidv4();
+      state.master[uuid] = {
+        title: ''
+      };
+      if (!item.children) {
+        item.children = [];
+      }
+      item.children.push(uuid);
+      return state;
+    });
   }
 
   todoDelete(id) {
