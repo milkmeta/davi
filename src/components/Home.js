@@ -26,7 +26,7 @@ const Home = props => (
         <TaskDetailPopup master={props.master} display={props.popup} dispatch={props.dispatch}/>
       </main>
     </div>
-    <EventListener target="window" onResize={e => props.dispatch('windowResize')} />
+    <EventListener target="window" onResize={() => props.dispatch('windowResize')} />
   </div>
 );
 
