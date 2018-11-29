@@ -161,7 +161,17 @@ class App extends MicroContainer {
   }
 
   todoDelete(id) {
-    console.log(id);
+    const message = `タスク "${this.state.master[id].title}" を消去してもよろしいですか？`;
+    if (!window.confirm(message)) {
+      return false;
+    }
+    this.setState(state => {
+      const child = state.master[id];
+      const item = state.master[child.parent];
+      item.children = item.children.filter(childItem => childItem !== id);
+      child.parent = null;
+      return state;
+    });
   }
 
   todoChangeTitle(id, value) {

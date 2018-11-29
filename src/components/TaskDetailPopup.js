@@ -24,6 +24,10 @@ const TaskDetailPopup = props => (
       props.dispatch('todoChangeArchive', props.display.id);
       props.dispatch('todoPopup', props.display.id, popupName, e)
     }}>アーカイブ</button></li>
+    <li><button disabled={props.master[props.display.id] && props.master[props.display.id].isRoot} onClick={e => {
+      props.dispatch('todoDelete', props.display.id);
+      props.dispatch('todoPopup', props.display.id, popupName, e)
+    }}>削除</button></li>
   </ul>
 );
 
