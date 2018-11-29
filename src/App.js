@@ -129,7 +129,11 @@ class App extends MicroContainer {
   }
 
   todoChangeStatus(itemInfo) {
-    console.log(itemInfo);
+    this.setState(state => {
+      const item = state.master[itemInfo.id];
+      item.checked = !item.checked;
+      return state;
+    });
   }
 
   todoChangeArchive(itemInfo) {
