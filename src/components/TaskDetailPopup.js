@@ -8,7 +8,7 @@ const TaskDetailPopup = props => (
     left: props.display.pageX,
     top: props.display.pageY
   }}>
-    <li><button disabled={props.master[props.display.id].isRoot} onClick={e => {
+    <li><button disabled={props.master[props.display.id] && props.master[props.display.id].isRoot} onClick={e => {
       props.dispatch('todoAddSibling', props.display.id);
       props.dispatch('todoPopup', props.display.id, popupName, e)
     }}>タスクを追加</button></li>
@@ -20,7 +20,7 @@ const TaskDetailPopup = props => (
       props.dispatch('todoChangeStar', props.display.id);
       props.dispatch('todoPopup', props.display.id, popupName, e)
     }}>スター</button></li>
-    <li><button disabled={props.master[props.display.id].isRoot} onClick={e => {
+    <li><button disabled={props.master[props.display.id] && props.master[props.display.id].isRoot} onClick={e => {
       props.dispatch('todoChangeArchive', props.display.id);
       props.dispatch('todoPopup', props.display.id, popupName, e)
     }}>アーカイブ</button></li>
@@ -30,5 +30,10 @@ const TaskDetailPopup = props => (
     }}>削除</button></li>
   </ul>
 );
+
+TaskDetailPopup.defaultProps = {
+  master: {},
+  display: {}
+};
 
 export default TaskDetailPopup;
