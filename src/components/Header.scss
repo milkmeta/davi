@@ -14,9 +14,23 @@
     font-size: 1.5rem;
   }
 
-  &__about {
-    @include reset-margin;
+  &__link {
+    @include reset-list;
+    display: flex;
     margin-left: auto;
+
+    li {
+      margin-left: 1rem;
+    }
+
+    button {
+      @include reset-padding;
+      @include reset-border;
+      @include reset-background-color;
+      @include reset-color;
+      @include reset-font-weight;
+      text-decoration: underline;
+    }
 
     a {
       @include reset-color;

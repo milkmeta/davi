@@ -31,6 +31,7 @@ class App extends MicroContainer {
 
   componentDidMount() {
     this.subscribe({
+      todoLoadSample: this.todoLoadSample,
       todoAddSibling: this.todoAddSibling,
       todoAddChild: this.todoAddChild,
       todoDelete: this.todoDelete,
@@ -42,6 +43,16 @@ class App extends MicroContainer {
       todoPopup: this.todoPopup,
       windowResize: this.windowResize
     });
+  }
+
+  todoLoadSample() {
+    fetch('./sample.json')
+      .then((response) => {
+        return response.json();
+      })
+      .then((master) => {
+        this.setState({master})
+      });
   }
 
   todoAddSibling(eventId) {
