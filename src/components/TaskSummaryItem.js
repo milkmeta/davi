@@ -3,10 +3,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './TaskSummaryItem.scss';
 
 const TaskSummaryItem = props => {
-  const item = props.master[props.id];
+  const itemDefault = {
+    title: ''
+  };
+  const itemRaw = props.master[props.id];
+  const item = Object.assign(itemDefault, itemRaw);
+
   return (
     <div className="TaskSummaryItem" data-checked={item.checked}>
-      <input type="text" className="TaskSummaryItem__title" defaultValue={item.title} />
+      <input type="text" className="TaskSummaryItem__title" value={item.title} onChange={e => props.dispatch('todoChangeTitle', props.id, e.target.value)} />
       <button className="TaskSummaryItem__button"><FontAwesomeIcon icon={['fas', 'ellipsis-h']} /></button>
     </div>
   );
