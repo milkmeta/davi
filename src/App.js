@@ -125,7 +125,11 @@ class App extends MicroContainer {
 
   todoAddSibling(siblingId) {
     this.setState(state => {
-      const id = state.master[siblingId].parent;
+      const sibling = state.master[siblingId]
+      if (sibling.isRoot) {
+        return;
+      }
+      const id = sibling.parent;
       const item = state.master[id];
       const uuid = uuidv4();
       state.master[uuid] = {
@@ -195,6 +199,9 @@ class App extends MicroContainer {
   todoChangeArchive(id) {
     this.setState(state => {
       const item = state.master[id];
+      if (item.isRoot) {
+        return;
+      }
       item.archived = !item.archived;
       return state;
     });

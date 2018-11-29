@@ -19,11 +19,11 @@ const Main = props => (
     <div className="Main__body">
       <aside className="Main__aside">
         <TaskSummaryList master={props.master} children={[props.rootId]} dispatch={props.dispatch} />
-        <TaskSummaryPopup display={props.popup} dispatch={props.dispatch}/>
+        <TaskSummaryPopup master={props.master} display={props.popup} dispatch={props.dispatch}/>
       </aside>
       <main className="Main__main">
         <TaskDetailList master={props.master} children={[props.rootId]} dispatch={props.dispatch} />
-        <TaskDetailPopup display={props.popup} dispatch={props.dispatch}/>
+        <TaskDetailPopup master={props.master} display={props.popup} dispatch={props.dispatch}/>
       </main>
     </div>
     <EventListener target="window" onResize={e => props.dispatch('windowResize')} />
