@@ -89,7 +89,43 @@ class App extends MicroContainer {
   }
 
   componentDidMount() {
-    this.subscribe({});
+    this.subscribe({
+      todoAdd: this.todoAdd,
+      todoDelete: this.todoDelete,
+      todoChangeTitle: this.todoChangeTitle,
+      todoChangeDate: this.todoChangeDate,
+      todoChangeStatus: this.todoChangeStatus,
+      todoChangeStar: this.todoChangeStar,
+      todoChangeArchive: this.todoChangeArchive
+    });
+  }
+
+  todoAdd(itemInfo) {
+    console.log(itemInfo);
+  }
+
+  todoDelete(itemInfo) {
+    console.log(itemInfo);
+  }
+
+  todoChangeTitle(itemInfo, value) {
+    console.log(itemInfo);
+  }
+
+  todoChangeDate(itemInfo, value) {
+    console.log(itemInfo);
+  }
+
+  todoChangeStar(itemInfo) {
+    console.log(itemInfo);
+  }
+
+  todoChangeStatus(itemInfo) {
+    console.log(itemInfo);
+  }
+
+  todoChangeArchive(itemInfo) {
+    console.log(itemInfo);
   }
 
   componentWillUpdate(nextProps, nextState) {
