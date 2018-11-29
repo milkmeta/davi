@@ -52,6 +52,10 @@
     color: hsla(0, 0%, 0%, .2);
     font-weight: bold;
     cursor: pointer;
+
+    svg {
+      pointer-events: none;
+    }
   }
 
   &__children {

@@ -146,14 +146,16 @@ class App extends MicroContainer {
     console.log(id);
   }
 
-  todoDetailMenu(id, pageX, pageY) {
+  todoDetailMenu(id, e) {
+    e.persist();
+    const offsetParent = e.target.offsetParent;
     this.setState(state => {
       const visibility = (id === state.popup.id) ? !state.popup.show : true;
       state.popup = {
         show: visibility,
         id,
-        pageX,
-        pageY
+        pageX: e.pageX - offsetParent.offsetLeft,
+        pageY: e.pageY - offsetParent.offsetTop
       }
       return state;
     });
