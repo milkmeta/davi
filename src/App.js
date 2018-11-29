@@ -88,6 +88,10 @@ class App extends MicroContainer {
     this.state = lastState || defaultState;
   }
 
+  componentDidMount() {
+    this.subscribe({});
+  }
+
   componentWillUpdate(nextProps, nextState) {
     console.log(nextProps, nextState);
     localStorage.setItem(localStorageName, JSON.stringify(nextState));
