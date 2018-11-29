@@ -10,6 +10,7 @@ const defaultState = {
     root: {
       title: 'Root',
       starred: true,
+      isRoot: true,
       children: [
         'task01',
         'task02',
@@ -20,6 +21,7 @@ const defaultState = {
     task01: {
       title: 'Task 01',
       date: '2019-01-01',
+      parent: 'root',
       children: [
         'task01_01',
         'task01_02'
@@ -27,14 +29,17 @@ const defaultState = {
     },
     task01_01: {
       title: 'Task 01_01',
-      date: '2019-01-01'
+      date: '2019-01-01',
+      parent: 'task01'
     },
     task01_02: {
-      title: 'Task 01_02'
+      title: 'Task 01_02',
+      parent: 'task01'
     },
     task02: {
       title: 'Task 02',
       starred: true,
+      parent: 'root',
       children: [
         'task02_01',
         'task02_02'
@@ -42,14 +47,17 @@ const defaultState = {
     },
     task02_01: {
       title: 'Task 02_01',
-      starred: true
+      starred: true,
+      parent: 'task02'
     },
     task02_02: {
-      title: 'Task 02_02'
+      title: 'Task 02_02',
+      parent: 'task02'
     },
     task03: {
       title: 'Task 03',
       checked: true,
+      parent: 'root',
       children: [
         'task03_01',
         'task03_02'
@@ -57,15 +65,18 @@ const defaultState = {
     },
     task03_01: {
       title: 'Task 03_01',
-      checked: true
+      checked: true,
+      parent: 'task03'
     },
     task03_02: {
-      title: 'Task 03_02'
+      title: 'Task 03_02',
+      parent: 'task03'
     },
     task04: {
       title: 'Task 04',
       date: '2019-04-01',
       archived: true,
+      parent: 'root',
       children: [
         'task04_01',
         'task04_02'
@@ -73,10 +84,12 @@ const defaultState = {
     },
     task04_01: {
       title: 'Task 04_01',
-      archived: true
+      archived: true,
+      parent: 'task04'
     },
     task04_02: {
-      title: 'Task 04_02'
+      title: 'Task 04_02',
+      parent: 'task04'
     }
   },
   popup: {
@@ -97,7 +110,8 @@ class App extends MicroContainer {
 
   componentDidMount() {
     this.subscribe({
-      todoAdd: this.todoAdd,
+      todoAddSibling: this.todoAddSibling,
+      todoAddChild: this.todoAddChild,
       todoDelete: this.todoDelete,
       todoChangeTitle: this.todoChangeTitle,
       todoChangeDate: this.todoChangeDate,
@@ -109,12 +123,30 @@ class App extends MicroContainer {
     });
   }
 
-  todoAdd(id) {
+  todoAddSibling(siblingId) {
+    this.setState(state => {
+      const id = state.master[siblingId].parent;
+      const item = state.master[id];
+      const uuid = uuidv4();
+      state.master[uuid] = {
+        title: '',
+        parent: [id]
+      };
+      if (!item.children) {
+        item.children = [];
+      }
+      item.children.push(uuid);
+      return state;
+    });
+  }
+
+  todoAddChild(id) {
     this.setState(state => {
       const item = state.master[id];
       const uuid = uuidv4();
       state.master[uuid] = {
-        title: ''
+        title: '',
+        parent: [id]
       };
       if (!item.children) {
         item.children = [];

@@ -9,7 +9,11 @@ const TaskDetailPopup = props => (
     top: props.display.pageY
   }}>
     <li><button onClick={e => {
-      props.dispatch('todoAdd', props.display.id);
+      props.dispatch('todoAddSibling', props.display.id);
+      props.dispatch('todoPopup', props.display.id, popupName, e)
+    }}>タスクを追加</button></li>
+    <li><button onClick={e => {
+      props.dispatch('todoAddChild', props.display.id);
       props.dispatch('todoPopup', props.display.id, popupName, e)
     }}>サブタスクを追加</button></li>
     <li><button onClick={e => {
