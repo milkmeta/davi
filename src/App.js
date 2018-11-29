@@ -10,8 +10,8 @@ const defaultState = {
     root: {
       title: 'Root',
       isRoot: true,
-      starred: true,
-    },
+      starred: true
+    }
   },
   popup: {
     name: '',
@@ -31,7 +31,7 @@ class App extends MicroContainer {
 
   componentDidMount() {
     this.subscribe({
-      todoLoadSample: this.todoLoadSample,
+      todoLoadState: this.todoLoadState,
       todoAddSibling: this.todoAddSibling,
       todoAddChild: this.todoAddChild,
       todoDelete: this.todoDelete,
@@ -45,19 +45,20 @@ class App extends MicroContainer {
     });
   }
 
-  todoLoadSample() {
-    fetch('./sample.json')
-      .then((response) => {
-        return response.json();
-      })
-      .then((master) => {
-        this.setState({master})
-      });
+  todoLoadState(name) {
+    if (name === 'reset') {
+      this.setState(defaultState);
+    }
+    if (name === 'sample') {
+      fetch('./sample.json')
+        .then(response => response.json())
+        .then(jsonData => this.setState(jsonData));
+    }
   }
 
   todoAddSibling(eventId) {
     this.setState(state => {
-      const eventItem = state.master[eventId]
+      const eventItem = state.master[eventId];
       if (eventItem.isRoot) {
         return;
       }
@@ -160,7 +161,7 @@ class App extends MicroContainer {
         show: visibility,
         pageX: e.pageX - offsetParent.offsetLeft,
         pageY: e.pageY - offsetParent.offsetTop
-      }
+      };
       return state;
     });
   }
