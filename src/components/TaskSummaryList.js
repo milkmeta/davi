@@ -3,7 +3,7 @@ import TaskSummaryItem from './TaskSummaryItem';
 import './TaskSummaryList.scss';
 
 const TaskSummaryList = props => {
-  const scanStarredIds = (ids) => {
+  const scanStarredIds = ids => {
     const foundIds = [];
     ids.forEach(id => {
       const item = props.master[id];
@@ -15,7 +15,7 @@ const TaskSummaryList = props => {
       }
     });
     return foundIds;
-  }
+  };
   const starredIds = scanStarredIds(props.children);
   // TODO: ID走査時の無限ループの阻止
 

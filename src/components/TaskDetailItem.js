@@ -10,9 +10,9 @@ const TaskDetailItem = props => {
     starred: false,
     checked: false,
     archived: false
-  }
+  };
   const itemRaw = props.master[props.id];
-  const item = Object.assign(itemDefault, itemRaw)
+  const item = Object.assign(itemDefault, itemRaw);
   const itemInfo = {
     id: props.id
   };
