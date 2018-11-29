@@ -39,7 +39,7 @@
 }
 
 @mixin reset-text-align {
-  text-align: none;
+  text-align: inherit;
 }
 
 @mixin reset-text-decoration {
