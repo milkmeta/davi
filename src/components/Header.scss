@@ -1,9 +1,11 @@
+@import "./variables";
+
 .Header {
   display: flex;
   align-items: center;
   padding: .5rem 1rem;
-  background-color: hsla(270, 100%, 65%, 1);
-  color: hsla(0, 0%, 100%, 1);
+  background-color: $color-theme-01;
+  color: $color-white-01;
   font-weight: bold;
 
   &__title {

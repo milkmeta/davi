@@ -1,3 +1,5 @@
+@import "./variables";
+
 .TaskSummaryPopup {
   display: none;
   position: absolute;
@@ -5,7 +7,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  background-color: hsla(0, 0%, 0%, .05);
+  background-color: $color-white-02;
 
   button {
     width: 100%;
