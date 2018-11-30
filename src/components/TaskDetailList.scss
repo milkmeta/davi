@@ -3,9 +3,12 @@
 
 .TaskDetailList {
   @include reset-list;
-  padding: 1rem;
 
-  & & {
-    padding: 0;
+  @media (min-width: 45rem) {
+    padding: 1rem;
+
+    & & {
+      padding: 0;
+    }
   }
 }

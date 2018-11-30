@@ -5,7 +5,7 @@
   &__self {
     display: flex;
     overflow: hidden;
-    padding: .25rem 0;
+    padding: .25rem .5rem;
     border: 1px $color-gray-02 {
       bottom-style: solid;
     }
@@ -38,27 +38,32 @@
     }
   }
 
-  %__text {
+  &__texts {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: .25rem 0;
+  }
+
+  &__text {
     @include reset-border;
     @include reset-background-color;
     @include reset-color;
-    padding: .25rem;
+    padding: 0 .25rem;
 
     &:hover {
       background-color: $color-white-02;
     }
-  }
 
-  &__title {
-    @extend %__text;
-    overflow: hidden;
-    width: 100%;
-    text-overflow: ellipsis;
-  }
+    &--title {
+      overflow: hidden;
+      width: 100%;
+      text-overflow: ellipsis;
+    }
 
-  &__date {
-    @extend %__text;
-    font-size: .75rem;
+    &--date {
+      font-size: .75rem;
+    }
   }
 
   &__button {
@@ -97,6 +102,19 @@
   }
 
   @media (min-width: 45rem) {
+    &__self {
+      padding: .25rem 0;
+    }
+
+    &__texts {
+      flex-direction: row;
+      padding: 0;
+    }
+
+    &__text {
+      padding: .25rem;
+    }
+
     &__children {
       padding-left: 1.5rem;
     }
