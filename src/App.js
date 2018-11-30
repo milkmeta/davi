@@ -18,11 +18,9 @@ const defaultState = {
     itemId: '',
     show: false,
     pageX: 0,
-    pageY: 0
-  },
-  window: {
-    width: 0,
-    height: 0
+    pageY: 0,
+    windowW: 0,
+    windowH: 0
   }
 };
 const lastState =  JSON.parse(localStorage.getItem(localStorageName));
@@ -184,8 +182,8 @@ class App extends MicroContainer {
   windowResize(e) {
     this.setState(state => {
       state.popup.show = false;
-      state.window.width = e.currentTarget.innerWidth;
-      state.window.height = e.currentTarget.innerHeight;
+      state.popup.windowW = e.currentTarget.innerWidth;
+      state.popup.windowH = e.currentTarget.innerHeight;
       return state;
     });
   }

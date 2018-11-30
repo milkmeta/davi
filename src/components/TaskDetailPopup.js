@@ -15,7 +15,7 @@ class TaskDetailPopup extends Component {
   render() {
     const props = this.props;
     const popupName = 'TaskDetailPopup';
-    const { name, itemId, show, pageX, pageY} = props.display;
+    const { name, itemId, show, pageX, pageY, windowW, windowH} = props.display;
     const itemDefault = {
       isRoot: false
     };
