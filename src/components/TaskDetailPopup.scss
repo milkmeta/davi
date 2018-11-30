@@ -15,8 +15,15 @@
     @include reset-background-color;
     @include reset-color;
     @include reset-text-align;
+    display: flex;
+    align-items: center;
     width: 100%;
     padding: .25rem .5rem;
+  }
+
+  &__icon {
+    min-width: 1em;
+    margin-right: .5rem;
   }
 
   &[data-visible="true"] {

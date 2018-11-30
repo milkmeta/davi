@@ -21,8 +21,8 @@ const TaskDetailPopup = props => {
           props.dispatch('todoAddSibling', itemId);
           props.dispatch('todoPopup', itemId, popupName, e)
         }}>
-          <FontAwesomeIcon icon={['fas', 'plus']} />
-          <span>タスクを追加</span>
+          <FontAwesomeIcon className="TaskDetailPopup__icon" icon={['fas', 'plus']} />
+          <span className="TaskDetailPopup__text">タスクを追加</span>
         </button>
       </li>
       <li>
@@ -30,8 +30,8 @@ const TaskDetailPopup = props => {
           props.dispatch('todoAddChild', itemId);
           props.dispatch('todoPopup', itemId, popupName, e)
         }}>
-          <FontAwesomeIcon icon={['fas', 'level-down-alt']} />
-          <span>サブタスクを追加</span>
+          <FontAwesomeIcon className="TaskDetailPopup__icon" icon={['fas', 'level-down-alt']} />
+          <span className="TaskDetailPopup__text">サブタスクを追加</span>
         </button>
       </li>
       <li>
@@ -39,8 +39,8 @@ const TaskDetailPopup = props => {
           props.dispatch('todoChangeStar', itemId);
           props.dispatch('todoPopup', itemId, popupName, e)
         }}>
-          <FontAwesomeIcon icon={[(!item.starred ? 'fas' : 'far'), 'star']} />
-          <span>{!item.starred ? 'スターをつける' : 'スターを外す'}</span>
+          <FontAwesomeIcon className="TaskDetailPopup__icon" icon={[(!item.starred ? 'fas' : 'far'), 'star']} />
+          <span className="TaskDetailPopup__text">{!item.starred ? 'スターをつける' : 'スターを外す'}</span>
       </button>
       </li>
       <li>
@@ -48,8 +48,8 @@ const TaskDetailPopup = props => {
           props.dispatch('todoChangeArchive', itemId);
           props.dispatch('todoPopup', itemId, popupName, e)
         }}>
-          <FontAwesomeIcon icon={['fas', 'archive']} />
-          <span>アーカイブ</span>
+          <FontAwesomeIcon className="TaskDetailPopup__icon" icon={['fas', 'archive']} />
+          <span className="TaskDetailPopup__text">{!item.archived ? 'アーカイブ' : 'アンアーカイブ'}</span>
         </button>
       </li>
       <li>
@@ -57,8 +57,8 @@ const TaskDetailPopup = props => {
           props.dispatch('todoDelete', itemId);
           props.dispatch('todoPopup', itemId, popupName, e)
         }}>
-          <FontAwesomeIcon icon={['fas', 'trash-alt']} />
-          <span>削除</span>
+          <FontAwesomeIcon className="TaskDetailPopup__icon" icon={['fas', 'trash-alt']} />
+          <span className="TaskDetailPopup__text">削除</span>
         </button>
       </li>
     </ul>

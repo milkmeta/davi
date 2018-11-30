@@ -21,8 +21,8 @@ const TaskSummaryPopup = props => {
           props.dispatch('todoChangeStar', itemId);
           props.dispatch('todoPopup', itemId, popupName, e)
         }}>
-          <FontAwesomeIcon icon={[(!item.starred ? 'fas' : 'far'), 'star']} />
-          <span>{!item.starred ? 'スターをつける' : 'スターを外す'}</span>
+          <FontAwesomeIcon className="TaskSummaryPopup__icon" icon={[(!item.starred ? 'fas' : 'far'), 'star']} />
+          <span className="TaskSummaryPopup__text">{!item.starred ? 'スターをつける' : 'スターを外す'}</span>
         </button>
       </li>
       <li>
@@ -30,8 +30,8 @@ const TaskSummaryPopup = props => {
           props.dispatch('todoChangeArchive', itemId);
           props.dispatch('todoPopup', itemId, popupName, e)
         }}>
-          <FontAwesomeIcon icon={['fas', 'archive']} />
-          <span>{!item.archived ? 'アーカイブ' : 'アンアーカイブ'}</span>
+          <FontAwesomeIcon className="TaskSummaryPopup__icon" icon={['fas', 'archive']} />
+          <span className="TaskSummaryPopup__text">{!item.archived ? 'アーカイブ' : 'アンアーカイブ'}</span>
         </button>
       </li>
       <li>
@@ -39,8 +39,8 @@ const TaskSummaryPopup = props => {
           props.dispatch('todoDelete', itemId);
           props.dispatch('todoPopup', itemId, popupName, e)
         }}>
-          <FontAwesomeIcon icon={['fas', 'trash-alt']} />
-          <span>削除</span>
+          <FontAwesomeIcon className="TaskSummaryPopup__icon" icon={['fas', 'trash-alt']} />
+          <span className="TaskSummaryPopup__text">削除</span>
         </button>
       </li>
     </ul>
