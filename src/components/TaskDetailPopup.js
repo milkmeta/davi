@@ -5,6 +5,11 @@ import './TaskDetailPopup.scss';
 class TaskDetailPopup extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      width: null,
+      height: null
+    }
+    this.boxRef = React.createRef();
   }
 
   render() {
@@ -72,6 +77,18 @@ class TaskDetailPopup extends Component {
       </ul>
     );
   }
+
+  componentDidMount() {
+    const box = this.boxRef.current;
+    const originalStyleAttr = box.getAttribute('style');
+    box.setAttribute('style', 'position: absolute; visibility: hidden; display: block;');
+    this.setState({
+      width: box.offsetWidth,
+      height: box.offsetHeight
+    });
+    box.setAttribute('style', originalStyleAttr);
+  }
+}
 
 TaskDetailPopup.defaultProps = {
   master: {},
