@@ -1,4 +1,5 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './TaskDetailPopup.scss';
 
 const TaskDetailPopup = props => {
@@ -15,26 +16,51 @@ const TaskDetailPopup = props => {
       left: pageX,
       top: pageY
     }}>
-      <li><button disabled={item.isRoot} onClick={e => {
-        props.dispatch('todoAddSibling', itemId);
-        props.dispatch('todoPopup', itemId, popupName, e)
-      }}>タスクを追加</button></li>
-      <li><button onClick={e => {
-        props.dispatch('todoAddChild', itemId);
-        props.dispatch('todoPopup', itemId, popupName, e)
-      }}>サブタスクを追加</button></li>
-      <li><button onClick={e => {
-        props.dispatch('todoChangeStar', itemId);
-        props.dispatch('todoPopup', itemId, popupName, e)
-      }}>スター</button></li>
-      <li><button disabled={item.isRoot} onClick={e => {
-        props.dispatch('todoChangeArchive', itemId);
-        props.dispatch('todoPopup', itemId, popupName, e)
-      }}>アーカイブ</button></li>
-      <li><button disabled={item.isRoot} onClick={e => {
-        props.dispatch('todoDelete', itemId);
-        props.dispatch('todoPopup', itemId, popupName, e)
-      }}>削除</button></li>
+      <li>
+        <button disabled={item.isRoot} onClick={e => {
+          props.dispatch('todoAddSibling', itemId);
+          props.dispatch('todoPopup', itemId, popupName, e)
+        }}>
+          <FontAwesomeIcon icon={['fas', 'plus']} />
+          <span>タスクを追加</span>
+        </button>
+      </li>
+      <li>
+        <button onClick={e => {
+          props.dispatch('todoAddChild', itemId);
+          props.dispatch('todoPopup', itemId, popupName, e)
+        }}>
+          <FontAwesomeIcon icon={['fas', 'level-down-alt']} />
+          <span>サブタスクを追加</span>
+        </button>
+      </li>
+      <li>
+        <button onClick={e => {
+          props.dispatch('todoChangeStar', itemId);
+          props.dispatch('todoPopup', itemId, popupName, e)
+        }}>
+          <FontAwesomeIcon icon={['fas', 'star']} />
+          <span>スター</span>
+      </button>
+      </li>
+      <li>
+        <button disabled={item.isRoot} onClick={e => {
+          props.dispatch('todoChangeArchive', itemId);
+          props.dispatch('todoPopup', itemId, popupName, e)
+        }}>
+          <FontAwesomeIcon icon={['fas', 'archive']} />
+          <span>アーカイブ</span>
+        </button>
+      </li>
+      <li>
+        <button disabled={item.isRoot} onClick={e => {
+          props.dispatch('todoDelete', itemId);
+          props.dispatch('todoPopup', itemId, popupName, e)
+        }}>
+          <FontAwesomeIcon icon={['fas', 'trash-alt']} />
+          <span>削除</span>
+        </button>
+      </li>
     </ul>
   );
 };
