@@ -5,6 +5,7 @@
   &__self {
     display: flex;
     overflow: hidden;
+    padding: .25rem .5rem;
     border: 1px $color-gray-02 {
       bottom-style: solid;
     }
@@ -23,39 +24,60 @@
     background-color: $color-theme-02;
     cursor: pointer;
 
+    &:hover {
+      background-color: $color-theme-03;
+    }
+
     &:checked {
       border-color: $color-gray-01;
       background-color: $color-white-02;
+
+      &:hover {
+        background-color: $color-white-03;
+      }
     }
   }
 
-  %__text {
+  &__texts {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: .25rem 0;
+  }
+
+  &__text {
     @include reset-border;
     @include reset-background-color;
     @include reset-color;
-    padding: .5rem .25rem;
-  }
+    padding: 0 .25rem;
 
-  &__title {
-    @extend %__text;
-    overflow: hidden;
-    width: 100%;
-    text-overflow: ellipsis;
-  }
+    &:hover {
+      background-color: $color-white-02;
+    }
 
-  &__date {
-    @extend %__text;
-    font-size: .75rem;
+    &--title {
+      overflow: hidden;
+      width: 100%;
+      text-overflow: ellipsis;
+    }
+
+    &--date {
+      font-size: .75rem;
+    }
   }
 
   &__button {
     @include reset-border;
     @include reset-background-color;
     flex-shrink: 0;
-    padding: 0 .25rem;
+    padding: .25rem;
     color: $color-gray-01;
     font-weight: bold;
     cursor: pointer;
+
+    &:hover {
+      background-color: $color-white-02;
+    }
 
     svg {
       pointer-events: none;
@@ -80,6 +102,19 @@
   }
 
   @media (min-width: 45rem) {
+    &__self {
+      padding: .25rem 0;
+    }
+
+    &__texts {
+      flex-direction: row;
+      padding: 0;
+    }
+
+    &__text {
+      padding: .25rem;
+    }
+
     &__children {
       padding-left: 1.5rem;
     }

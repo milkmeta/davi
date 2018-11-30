@@ -3,6 +3,7 @@
 
 .TaskSummaryItem {
   display: flex;
+  padding: .25rem 0;
 
   &__title {
     @include reset-border;
@@ -10,19 +11,27 @@
     @include reset-color;
     flex-grow: 1;
     overflow: hidden;
-    padding: .5rem .25rem;
+    padding: .25rem;
     font-weight: bold;
     text-overflow: ellipsis;
+
+    &:hover {
+      background-color: $color-white-02;
+    }
   }
 
   &__button {
     @include reset-border;
     @include reset-background-color;
     flex-shrink: 0;
-    padding: 0 .25rem;
+    padding: .25rem;
     color: $color-gray-01;
     font-weight: bold;
     cursor: pointer;
+
+    &:hover {
+      background-color: $color-white-02;
+    }
 
     svg {
       pointer-events: none;

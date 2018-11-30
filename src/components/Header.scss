@@ -17,23 +17,38 @@
   &__link {
     @include reset-list;
     display: flex;
+    align-items: center;
     margin-left: auto;
 
     li {
       margin-left: 1rem;
     }
 
+    button,
+    a {
+      @include reset-color;
+
+      &:hover {
+        color: $color-theme-02;
+      }
+    }
+
     button {
       @include reset-padding;
       @include reset-border;
       @include reset-background-color;
-      @include reset-color;
       @include reset-font-weight;
-      text-decoration: underline;
+      display: none;
+      padding: 0 .5rem;
+      border: solid 1px {
+        radius: .25rem;
+      }
     }
+  }
 
-    a {
-      @include reset-color;
+  @media (min-width: 45rem) {
+    &__link button {
+      display: block;
     }
   }
 }
