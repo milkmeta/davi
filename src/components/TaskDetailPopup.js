@@ -39,8 +39,8 @@ const TaskDetailPopup = props => {
           props.dispatch('todoChangeStar', itemId);
           props.dispatch('todoPopup', itemId, popupName, e)
         }}>
-          <FontAwesomeIcon icon={['fas', 'star']} />
-          <span>スター</span>
+          <FontAwesomeIcon icon={[(!item.starred ? 'fas' : 'far'), 'star']} />
+          <span>{!item.starred ? 'スターをつける' : 'スターを外す'}</span>
       </button>
       </li>
       <li>
