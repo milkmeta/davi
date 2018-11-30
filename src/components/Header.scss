@@ -17,6 +17,7 @@
   &__link {
     @include reset-list;
     display: flex;
+    align-items: center;
     margin-left: auto;
 
     li {
@@ -37,7 +38,10 @@
       @include reset-border;
       @include reset-background-color;
       @include reset-font-weight;
-      text-decoration: underline;
+      padding: 0 .5rem;
+      border: solid 1px {
+        radius: .25rem;
+      }
     }
   }
 }
