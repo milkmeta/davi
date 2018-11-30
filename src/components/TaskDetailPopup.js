@@ -9,7 +9,7 @@ const TaskDetailPopup = props => {
     isRoot: false
   };
   const itemRaw = props.master[itemId];
-  const item = Object.assign(itemDefault, itemRaw);
+  const item = Object.assign({}, itemDefault, itemRaw);
 
   return (
     <ul className="TaskDetailPopup" data-visible={name === popupName && show} style={{
