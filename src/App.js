@@ -180,9 +180,11 @@ class App extends MicroContainer {
 
   windowResize(e) {
     this.setState(state => {
-      state.popup.show = false;
-      state.popup.windowW = e.currentTarget.innerWidth;
-      state.popup.windowH = e.currentTarget.innerHeight;
+      Object.assign(state.popup, {
+        show: false,
+        windowWidth: e.currentTarget.innerWidth,
+        windowHeight: e.currentTarget.innerHeight
+      });
       return state;
     });
   }

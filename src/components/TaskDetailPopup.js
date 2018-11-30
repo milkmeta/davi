@@ -9,14 +9,16 @@ class TaskDetailPopup extends Component {
       width: null,
       height: null,
       offsetParent: null
-    }
+    };
     this.boxRef = React.createRef();
   }
 
   render() {
+    const state = this.state;
     const props = this.props;
+
     const popupName = 'TaskDetailPopup';
-    const { name, itemId, show, pageX, pageY, windowW, windowH} = props.display;
+    const { name, itemId, show, pageX, pageY, windowWidth, windowHeight} = props.display;
     const itemDefault = {
       isRoot: false
     };
@@ -24,24 +26,22 @@ class TaskDetailPopup extends Component {
     const item = Object.assign({}, itemDefault, itemRaw);
 
     const visibility = (name === popupName && show);
-    const styleAttr = {}
-    if (visibility && this.state.offsetParent) {
-      if ((pageX + this.state.width) < windowW) {
-        styleAttr.left = pageX - this.state.offsetParent.offsetLeft;
-      } else {
-        styleAttr.left = pageX - this.state.width - this.state.offsetParent.offsetLeft;
+    const style = {};
+    if (visibility && state.offsetParent) {
+      style.left = pageX - state.offsetParent.offsetLeft;
+      style.top = pageY - state.offsetParent.offsetTop;
+      if ((pageX + state.width) > windowWidth) {
+        style.left -= state.width;
       }
-      if ((pageY + this.state.height) < windowH) {
-        styleAttr.top = pageY - this.state.offsetParent.offsetTop;
-      } else {
-        styleAttr.top = pageY - this.state.height - this.state.offsetParent.offsetTop;
+      if ((pageY + state.height) > windowHeight) {
+        style.top -= state.height;
       }
     }
 
     return (
-      <ul className="TaskDetailPopup" data-visible={visibility} style={styleAttr} ref={this.boxRef}>
+      <ul className="TaskDetailPopup" data-visible={visibility} style={style} ref={this.boxRef}>
         <li>
-          <button disabled={item.isRoot} onClick={e => {
+          <button disabled={item.isRoot} onClick={() => {
             props.dispatch('todoAddSibling', itemId);
             props.dispatch('todoPopup', popupName, itemId);
           }}>
@@ -50,7 +50,7 @@ class TaskDetailPopup extends Component {
           </button>
         </li>
         <li>
-          <button onClick={e => {
+          <button onClick={() => {
             props.dispatch('todoAddChild', itemId);
             props.dispatch('todoPopup', popupName, itemId);
           }}>
@@ -59,7 +59,7 @@ class TaskDetailPopup extends Component {
           </button>
         </li>
         <li>
-          <button onClick={e => {
+          <button onClick={() => {
             props.dispatch('todoChangeStar', itemId);
             props.dispatch('todoPopup', popupName, itemId);
           }}>
@@ -68,7 +68,7 @@ class TaskDetailPopup extends Component {
         </button>
         </li>
         <li>
-          <button disabled={item.isRoot} onClick={e => {
+          <button disabled={item.isRoot} onClick={() => {
             props.dispatch('todoChangeArchive', itemId);
             props.dispatch('todoPopup', popupName, itemId);
           }}>
@@ -77,7 +77,7 @@ class TaskDetailPopup extends Component {
           </button>
         </li>
         <li>
-          <button disabled={item.isRoot} onClick={e => {
+          <button disabled={item.isRoot} onClick={() => {
             props.dispatch('todoDelete', itemId);
             props.dispatch('todoPopup', popupName, itemId);
           }}>
@@ -91,15 +91,14 @@ class TaskDetailPopup extends Component {
 
   componentDidMount() {
     const box = this.boxRef.current;
-    const offsetParent = box.offsetParent;
-    const originalStyleAttr = box.getAttribute('style');
+    const originalStyle = box.getAttribute('style');
     box.setAttribute('style', 'position: absolute; visibility: hidden; display: block;');
     this.setState({
       width: box.offsetWidth,
       height: box.offsetHeight,
-      offsetParent
+      offsetParent: box.offsetParent
     });
-    box.setAttribute('style', originalStyleAttr);
+    box.setAttribute('style', originalStyle);
   }
 }
 
