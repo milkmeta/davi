@@ -163,11 +163,10 @@ class App extends MicroContainer {
     });
     if (e) {
       e.persist();
-      const offsetParent = e.target.offsetParent;
       const position = {};
       if (e.detail) {
-        position.pageX = e.pageX - offsetParent.offsetLeft;
-        position.pageY = e.pageY - offsetParent.offsetTop;
+        position.pageX = e.pageX;
+        position.pageY = e.pageY;
       } else {
         position.pageX = e.target.offsetLeft + (e.target.offsetWidth / 2);
         position.pageY = e.target.offsetTop + (e.target.offsetHeight / 2);
