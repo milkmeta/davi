@@ -17,8 +17,8 @@ const defaultState = {
     name: '',
     itemId: '',
     show: false,
-    mouseX: 0,
-    mouseY: 0
+    pageX: 0,
+    pageY: 0
   }
 };
 const lastState =  JSON.parse(localStorage.getItem(localStorageName));
