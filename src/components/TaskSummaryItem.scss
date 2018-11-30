@@ -13,6 +13,10 @@
     padding: .5rem .25rem;
     font-weight: bold;
     text-overflow: ellipsis;
+
+    &:hover {
+      background-color: $color-white-02;
+    }
   }
 
   &__button {
@@ -23,6 +27,10 @@
     color: $color-gray-01;
     font-weight: bold;
     cursor: pointer;
+
+    &:hover {
+      background-color: $color-white-02;
+    }
 
     svg {
       pointer-events: none;

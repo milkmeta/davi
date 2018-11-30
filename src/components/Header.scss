@@ -23,17 +23,21 @@
       margin-left: 1rem;
     }
 
+    button,
+    a {
+      @include reset-color;
+
+      &:hover {
+        color: $color-theme-02;
+      }
+    }
+
     button {
       @include reset-padding;
       @include reset-border;
       @include reset-background-color;
-      @include reset-color;
       @include reset-font-weight;
       text-decoration: underline;
-    }
-
-    a {
-      @include reset-color;
     }
   }
 }
