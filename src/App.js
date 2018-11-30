@@ -152,21 +152,24 @@ class App extends MicroContainer {
 
   todoPopup(name, id, e) {
     this.setState(state => {
-      state.popup.show = (state.popup.name === name && id === state.popup.itemId) ? !state.popup.show : true;
-      state.popup.name = name;
-      state.popup.itemId = id || '';
+      Object.assign(state.popup, {
+        show: (name === state.popup.name && id === state.popup.itemId) ? !state.popup.show : true,
+        name: name,
+        itemId: id || ''
+      });
       return state;
     });
     if (e) {
       e.persist();
+      const offsetParent = e.target.offsetParent;
       this.setState(state => {
-        const offsetParent = e.target.offsetParent;
-        state.popup.pageX = e.pageX - offsetParent.offsetLeft;
-        state.popup.pageY = e.pageY - offsetParent.offsetTop;
+        Object.assign(state.popup, {
+          pageX: e.pageX - offsetParent.offsetLeft,
+          pageY: e.pageY - offsetParent.offsetTop
+        });
         return state;
       });
     }
-    // TODO: 代入コードの簡潔化
   }
 
   windowResize() {
