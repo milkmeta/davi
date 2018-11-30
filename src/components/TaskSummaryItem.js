@@ -7,7 +7,7 @@ const TaskSummaryItem = props => {
     title: ''
   };
   const itemRaw = props.master[props.id];
-  const item = Object.assign(itemDefault, itemRaw);
+  const item = Object.assign({}, itemDefault, itemRaw);
 
   return (
     <div className="TaskSummaryItem" data-checked={item.checked}>

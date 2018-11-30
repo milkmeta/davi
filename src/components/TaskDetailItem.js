@@ -12,7 +12,7 @@ const TaskDetailItem = props => {
     archived: false
   };
   const itemRaw = props.master[props.id];
-  const item = Object.assign(itemDefault, itemRaw);
+  const item = Object.assign({}, itemDefault, itemRaw);
 
   if (item.archived) {
     return false;

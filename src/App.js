@@ -17,8 +17,10 @@ const defaultState = {
     name: '',
     itemId: '',
     show: false,
-    mouseX: 0,
-    mouseY: 0
+    pageX: 0,
+    pageY: 0,
+    windowW: 0,
+    windowH: 0
   }
 };
 const lastState =  JSON.parse(localStorage.getItem(localStorageName));
@@ -161,11 +163,10 @@ class App extends MicroContainer {
     });
     if (e) {
       e.persist();
-      const offsetParent = e.target.offsetParent;
       const position = {};
       if (e.detail) {
-        position.pageX = e.pageX - offsetParent.offsetLeft;
-        position.pageY = e.pageY - offsetParent.offsetTop;
+        position.pageX = e.pageX;
+        position.pageY = e.pageY;
       } else {
         position.pageX = e.target.offsetLeft + (e.target.offsetWidth / 2);
         position.pageY = e.target.offsetTop + (e.target.offsetHeight / 2);
@@ -177,9 +178,13 @@ class App extends MicroContainer {
     }
   }
 
-  windowResize() {
+  windowResize(e) {
     this.setState(state => {
-      state.popup.show = false;
+      Object.assign(state.popup, {
+        show: false,
+        windowWidth: e.currentTarget.innerWidth,
+        windowHeight: e.currentTarget.innerHeight
+      });
       return state;
     });
   }
