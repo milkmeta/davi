@@ -18,7 +18,7 @@ class TaskSummaryPopup extends Component {
     const props = this.props;
 
     const popupName = 'TaskSummaryPopup';
-    const { name, itemId, show, pageX, pageY, windowW, windowH} = props.display;
+    const { name, itemId, show, pageX, pageY, windowWidth, windowHeight} = props.display;
     const itemDefault = {
       isRoot: false
     };
@@ -30,10 +30,10 @@ class TaskSummaryPopup extends Component {
     if (visibility && state.offsetParent) {
       style.left = pageX - state.offsetParent.offsetLeft;
       style.top = pageY - state.offsetParent.offsetTop;
-      if ((pageX + state.width) > windowW) {
+      if ((pageX + state.width) > windowWidth) {
         style.left -= state.width;
       }
-      if ((pageY + state.height) > windowH) {
+      if ((pageY + state.height) > windowHeight) {
         style.top -= state.height;
       }
     }
