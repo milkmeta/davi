@@ -163,13 +163,20 @@ class App extends MicroContainer {
     });
     if (e) {
       e.persist();
+      const rect = e.target.getBoundingClientRect();
+      const targetSize = {
+        x: rect.left + this.state.popup.windowScrollX,
+        y: rect.top + this.state.popup.windowScrollY,
+        w: rect.width,
+        h: rect.height
+      }
       const position = {};
       if (e.detail) {
         position.pageX = e.pageX;
         position.pageY = e.pageY;
       } else {
-        position.pageX = e.target.offsetLeft + (e.target.offsetWidth / 2);
-        position.pageY = e.target.offsetTop + (e.target.offsetHeight / 2);
+        position.pageX = targetSize.x + (targetSize.w / 2);
+        position.pageY = targetSize.y + (targetSize.h / 2);
       }
       this.setState(state => {
         Object.assign(state.popup, position);
@@ -183,7 +190,9 @@ class App extends MicroContainer {
       Object.assign(state.popup, {
         show: false,
         windowWidth: e.currentTarget.innerWidth,
-        windowHeight: e.currentTarget.innerHeight
+        windowHeight: e.currentTarget.innerHeight,
+        windowScrollX: e.currentTarget.scrollX,
+        windowScrollY: e.currentTarget.scrollY
       });
       return state;
     });
