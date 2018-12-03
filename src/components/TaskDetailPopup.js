@@ -18,7 +18,7 @@ class TaskDetailPopup extends Component {
     const props = this.props;
 
     const popupName = 'TaskDetailPopup';
-    const { name, itemId, show, pageX, pageY, windowWidth, windowHeight} = props.display;
+    const { name, itemId, show, pageX, pageY} = props.settings;
     const itemDefault = {
       isRoot: false
     };
@@ -30,10 +30,10 @@ class TaskDetailPopup extends Component {
     if (visibility && state.offsetParent) {
       style.left = pageX - state.offsetParent.offsetLeft;
       style.top = pageY - state.offsetParent.offsetTop;
-      if ((pageX + state.width) > windowWidth) {
+      if ((pageX + state.width) > props.window.width) {
         style.left -= state.width;
       }
-      if ((pageY + state.height) > windowHeight) {
+      if ((pageY + state.height) > props.window.height) {
         style.top -= state.height;
       }
     }
@@ -104,7 +104,8 @@ class TaskDetailPopup extends Component {
 
 TaskDetailPopup.defaultProps = {
   master: {},
-  display: {}
+  window: {},
+  popup: {}
 };
 
 export default TaskDetailPopup;

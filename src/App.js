@@ -13,14 +13,18 @@ const defaultState = {
       starred: true
     }
   },
+  window: {
+    width: null,
+    height: null,
+    scrollX: null,
+    scrollY: null
+  },
   popup: {
-    name: '',
-    itemId: '',
-    show: false,
-    pageX: 0,
-    pageY: 0,
-    windowW: 0,
-    windowH: 0
+    name: null,
+    itemId: null,
+    show: null,
+    pageX: null,
+    pageY: null
   }
 };
 const lastState =  JSON.parse(localStorage.getItem(localStorageName));
@@ -165,8 +169,8 @@ class App extends MicroContainer {
       e.persist();
       const rect = e.target.getBoundingClientRect();
       const targetSize = {
-        x: rect.left + this.state.popup.windowScrollX,
-        y: rect.top + this.state.popup.windowScrollY,
+        x: rect.left + this.state.window.scrollX,
+        y: rect.top + this.state.window.scrollY,
         w: rect.width,
         h: rect.height
       }
@@ -186,13 +190,18 @@ class App extends MicroContainer {
   }
 
   windowResize(e) {
+    const window = e.currentTarget;
     this.setState(state => {
-      Object.assign(state.popup, {
-        show: false,
-        windowWidth: e.currentTarget.innerWidth,
-        windowHeight: e.currentTarget.innerHeight,
-        windowScrollX: e.currentTarget.scrollX,
-        windowScrollY: e.currentTarget.scrollY
+      Object.assign(state, {
+        window: {
+          width: window.innerWidth,
+          height: window.innerHeight,
+          scrollX: window.scrollX,
+          scrollY: window.scrollY
+        },
+        popup: {
+          show: false
+        }
       });
       return state;
     });
