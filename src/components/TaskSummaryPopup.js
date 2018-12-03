@@ -28,8 +28,9 @@ class TaskSummaryPopup extends Component {
     const visibility = (name === popupName && show);
     const style = {};
     if (visibility && state.offsetParent) {
-      style.left = pageX - state.offsetParent.offsetLeft;
-      style.top = pageY - state.offsetParent.offsetTop;
+      const rect = state.offsetParent.getBoundingClientRect();
+      style.left = pageX - rect.left;
+      style.top = pageY - rect.top;
       if ((pageX + state.width) > props.window.width) {
         style.left -= state.width;
       }
