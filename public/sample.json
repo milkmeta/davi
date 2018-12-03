@@ -85,12 +85,5 @@
       "title": "Task 04_02",
       "parentId": "task04"
     }
-  },
-  "popup": {
-    "name": "",
-    "itemId": "",
-    "show": false,
-    "pageX": 0,
-    "pageY": 0
   }
 }
