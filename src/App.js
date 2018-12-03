@@ -152,12 +152,12 @@ class App extends MicroContainer {
     });
   }
 
-  todoPopup(name, id, e) {
+  todoPopup(name, id = '', e) {
     this.setState(state => {
       Object.assign(state.popup, {
         show: (name === state.popup.name && id === state.popup.itemId) ? !state.popup.show : true,
-        name: name,
-        itemId: id || ''
+        name,
+        itemId: id
       });
       return state;
     });
