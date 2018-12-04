@@ -167,22 +167,22 @@ class App extends MicroContainer {
     });
     if (e) {
       e.persist();
-      const rect = e.target.getBoundingClientRect();
-      const targetSize = {
-        x: rect.left + this.state.window.scrollX,
-        y: rect.top + this.state.window.scrollY,
-        w: rect.width,
-        h: rect.height
-      }
-      const position = {};
-      if (e.detail) {
-        position.pageX = e.pageX;
-        position.pageY = e.pageY;
-      } else {
-        position.pageX = targetSize.x + (targetSize.w / 2);
-        position.pageY = targetSize.y + (targetSize.h / 2);
-      }
       this.setState(state => {
+        const rect = e.target.getBoundingClientRect();
+        const targetSize = {
+          x: rect.left + state.window.scrollX,
+          y: rect.top + state.window.scrollY,
+          w: rect.width,
+          h: rect.height
+        }
+        const position = {};
+        if (e.detail) {
+          position.pageX = e.pageX;
+          position.pageY = e.pageY;
+        } else {
+          position.pageX = targetSize.x + (targetSize.w / 2);
+          position.pageY = targetSize.y + (targetSize.h / 2);
+        }
         Object.assign(state.popup, position);
         return state;
       });
