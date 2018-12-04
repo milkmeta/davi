@@ -23,12 +23,12 @@ class TaskDetailPopup extends Component {
     const itemDefault = {
       isRoot: false
     };
-    const itemRaw = props.master[settings.itemId];
+    const itemRaw = props.master[settings.id];
     const item = Object.assign({}, itemDefault, itemRaw);
 
-    const visibility = (settings.name === popupName && settings.show);
+    const show = (settings.name === popupName && settings.show);
     const style = {};
-    if (visibility && state.offsetParent) {
+    if (show && state.offsetParent) {
       const rect = state.offsetParent.getBoundingClientRect();
       style.left = settings.pageX - (rect.left + window.scrollX);
       style.top = settings.pageY - (rect.top + window.scrollY);
@@ -41,11 +41,11 @@ class TaskDetailPopup extends Component {
     }
 
     return (
-      <ul className="TaskDetailPopup" data-visible={visibility} style={style} ref={this.boxRef}>
+      <ul className="TaskDetailPopup" data-visible={show} style={style} ref={this.boxRef}>
         <li>
           <button disabled={item.isRoot} onClick={() => {
-            props.dispatch('todoAddSibling', settings.itemId);
-            props.dispatch('todoPopup', popupName, settings.itemId);
+            props.dispatch('todoAddSibling', settings.id);
+            props.dispatch('todoPopup', popupName, settings.id);
           }}>
             <FontAwesomeIcon className="TaskDetailPopup__icon" icon={['fas', 'plus']} />
             <span className="TaskDetailPopup__text">タスクを追加</span>
@@ -53,8 +53,8 @@ class TaskDetailPopup extends Component {
         </li>
         <li>
           <button onClick={() => {
-            props.dispatch('todoAddChild', settings.itemId);
-            props.dispatch('todoPopup', popupName, settings.itemId);
+            props.dispatch('todoAddChild', settings.id);
+            props.dispatch('todoPopup', popupName, settings.id);
           }}>
             <FontAwesomeIcon className="TaskDetailPopup__icon" icon={['fas', 'level-down-alt']} />
             <span className="TaskDetailPopup__text">サブタスクを追加</span>
@@ -62,8 +62,8 @@ class TaskDetailPopup extends Component {
         </li>
         <li>
           <button onClick={() => {
-            props.dispatch('todoChangeStar', settings.itemId);
-            props.dispatch('todoPopup', popupName, settings.itemId);
+            props.dispatch('todoChangeStar', settings.id);
+            props.dispatch('todoPopup', popupName, settings.id);
           }}>
             <FontAwesomeIcon className="TaskDetailPopup__icon" icon={[(!item.starred ? 'fas' : 'far'), 'star']} />
             <span className="TaskDetailPopup__text">{!item.starred ? 'スターをつける' : 'スターを外す'}</span>
@@ -71,8 +71,8 @@ class TaskDetailPopup extends Component {
         </li>
         <li>
           <button disabled={item.isRoot} onClick={() => {
-            props.dispatch('todoChangeArchive', settings.itemId);
-            props.dispatch('todoPopup', popupName, settings.itemId);
+            props.dispatch('todoChangeArchive', settings.id);
+            props.dispatch('todoPopup', popupName, settings.id);
           }}>
             <FontAwesomeIcon className="TaskDetailPopup__icon" icon={['fas', 'archive']} />
             <span className="TaskDetailPopup__text">{!item.archived ? 'アーカイブ' : 'アンアーカイブ'}</span>
@@ -80,8 +80,8 @@ class TaskDetailPopup extends Component {
         </li>
         <li>
           <button disabled={item.isRoot} onClick={() => {
-            props.dispatch('todoDelete', settings.itemId);
-            props.dispatch('todoPopup', popupName, settings.itemId);
+            props.dispatch('todoDelete', settings.id);
+            props.dispatch('todoPopup', popupName, settings.id);
           }}>
             <FontAwesomeIcon className="TaskDetailPopup__icon" icon={['fas', 'trash-alt']} />
             <span className="TaskDetailPopup__text">削除</span>

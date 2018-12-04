@@ -21,7 +21,7 @@ const defaultState = {
   },
   popup: {
     name: null,
-    itemId: null,
+    id: null,
     show: null,
     pageX: null,
     pageY: null
@@ -161,16 +161,16 @@ class App extends MicroContainer {
       e.persist();
     }
     this.setState(state => {
-      const show = (name === state.popup.name && id === state.popup.itemId) ? !state.popup.show : true;
+      const show = (name === state.popup.name && id === state.popup.id) ? !state.popup.show : true;
       const settings = {
         show,
         name,
-        itemId: id
+        id
       };
 
       if (e && show) {
         const rect = e.target.getBoundingClientRect();
-        const targetSize = {
+        const target = {
           x: rect.left + state.window.scrollX,
           y: rect.top + state.window.scrollY,
           w: rect.width,
@@ -180,8 +180,8 @@ class App extends MicroContainer {
           settings.pageX = e.pageX;
           settings.pageY = e.pageY;
         } else {
-          settings.pageX = targetSize.x + (targetSize.w / 2);
-          settings.pageY = targetSize.y + (targetSize.h / 2);
+          settings.pageX = target.x + (target.w / 2);
+          settings.pageY = target.y + (target.h / 2);
         }
       }
 
