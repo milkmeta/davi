@@ -1,17 +1,18 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './TaskPopupInner.scss';
 
 const TaskSummaryPopup = props => {
   const popupName = 'TaskSummaryPopup';
   return (
-    <ul>
+    <ul className="TaskPopupInner">
       <li>
         <button onClick={() => {
           props.dispatch('todoChangeStar', props.id);
           props.dispatch('todoPopup', popupName, props.id);
         }}>
-          <FontAwesomeIcon className="TaskPopup__icon" icon={[(!props.item.starred ? 'fas' : 'far'), 'star']} />
-          <span className="TaskPopup__text">{!props.item.starred ? 'スターをつける' : 'スターを外す'}</span>
+          <FontAwesomeIcon className="TaskPopupInner__icon" icon={[(!props.item.starred ? 'fas' : 'far'), 'star']} />
+          <span className="TaskPopupInner__text">{!props.item.starred ? 'スターをつける' : 'スターを外す'}</span>
         </button>
       </li>
       <li>
@@ -19,8 +20,8 @@ const TaskSummaryPopup = props => {
           props.dispatch('todoChangeArchive', props.id);
           props.dispatch('todoPopup', popupName, props.id);
         }}>
-          <FontAwesomeIcon className="TaskPopup__icon" icon={['fas', 'archive']} />
-          <span className="TaskPopup__text">{!props.item.archived ? 'アーカイブ' : 'アンアーカイブ'}</span>
+          <FontAwesomeIcon className="TaskPopupInner__icon" icon={['fas', 'archive']} />
+          <span className="TaskPopupInner__text">{!props.item.archived ? 'アーカイブ' : 'アンアーカイブ'}</span>
         </button>
       </li>
       <li>
@@ -28,8 +29,8 @@ const TaskSummaryPopup = props => {
           props.dispatch('todoDelete', props.id);
           props.dispatch('todoPopup', popupName, props.id);
         }}>
-          <FontAwesomeIcon className="TaskPopup__icon" icon={['fas', 'trash-alt']} />
-          <span className="TaskPopup__text">削除</span>
+          <FontAwesomeIcon className="TaskPopupInner__icon" icon={['fas', 'trash-alt']} />
+          <span className="TaskPopupInner__text">削除</span>
         </button>
       </li>
     </ul>

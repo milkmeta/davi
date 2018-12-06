@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './TaskPopup.scss';
+import './TaskPopupContainer.scss';
 
-class TaskPopup extends Component {
+class TaskPopupContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,7 +38,7 @@ class TaskPopup extends Component {
     }
 
     return (
-      <div className="TaskPopup" data-visible={show} style={style} ref={this.boxRef}>
+      <div className="TaskPopupContainer" data-visible={show} style={style} ref={this.boxRef}>
         {React.cloneElement(this.props.children, { item, id: settings.id })}
       </div>
     );
@@ -58,10 +58,10 @@ class TaskPopup extends Component {
   }
 }
 
-TaskPopup.defaultProps = {
+TaskPopupContainer.defaultProps = {
   master: {},
   window: {},
   popup: {}
 };
 
-export default TaskPopup;
+export default TaskPopupContainer;
