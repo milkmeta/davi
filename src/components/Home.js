@@ -13,24 +13,28 @@ import './Home.scss';
 
 library.add(fas, fab, far);
 
-const Home = props => (
-  <div className="Home">
-    <header className="Home__header">
-      <Header dispatch={props.dispatch} />
-    </header>
-    <div className="Home__body">
-      <aside className="Home__aside">
-        <TaskSummaryList master={props.master} childrenIds={[props.rootId]} dispatch={props.dispatch} />
-        <TaskSummaryPopup master={props.master} display={props.popup} dispatch={props.dispatch}/>
-      </aside>
-      <main className="Home__main">
-        <TaskDetailList master={props.master} childrenIds={[props.rootId]} dispatch={props.dispatch} />
-        <TaskDetailPopup master={props.master} display={props.popup} dispatch={props.dispatch}/>
-      </main>
+
+const Home = props => {
+  const windowEvent = e => props.dispatch('windowResize', e);
+  return (
+    <div className="Home">
+      <header className="Home__header">
+        <Header dispatch={props.dispatch} />
+      </header>
+      <div className="Home__body">
+        <aside className="Home__aside">
+          <TaskSummaryList master={props.master} childrenIds={[props.rootId]} dispatch={props.dispatch} />
+          <TaskSummaryPopup master={props.master} window={props.window} settings={props.popup} dispatch={props.dispatch}/>
+        </aside>
+        <main className="Home__main">
+          <TaskDetailList master={props.master} childrenIds={[props.rootId]} dispatch={props.dispatch} />
+          <TaskDetailPopup master={props.master} window={props.window} settings={props.popup} dispatch={props.dispatch}/>
+        </main>
+      </div>
+      <EventListener target="window" onLoad={windowEvent} onResize={windowEvent} onScroll={windowEvent} />
     </div>
-    <EventListener target="window" onLoad={e => props.dispatch('windowResize', e)} onResize={e => props.dispatch('windowResize', e)} />
-  </div>
-);
+  );
+};
 
 Home.defaultProps = {
   master: {},

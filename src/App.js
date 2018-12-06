@@ -13,14 +13,18 @@ const defaultState = {
       starred: true
     }
   },
+  window: {
+    width: null,
+    height: null,
+    scrollX: null,
+    scrollY: null
+  },
   popup: {
-    name: '',
-    itemId: '',
-    show: false,
-    pageX: 0,
-    pageY: 0,
-    windowW: 0,
-    windowH: 0
+    name: null,
+    id: null,
+    show: null,
+    pageX: null,
+    pageY: null
   }
 };
 const lastState =  JSON.parse(localStorage.getItem(localStorageName));
@@ -152,38 +156,53 @@ class App extends MicroContainer {
     });
   }
 
-  todoPopup(name, id, e) {
-    this.setState(state => {
-      Object.assign(state.popup, {
-        show: (name === state.popup.name && id === state.popup.itemId) ? !state.popup.show : true,
-        name: name,
-        itemId: id || ''
-      });
-      return state;
-    });
+  todoPopup(name, id = '', e) {
     if (e) {
       e.persist();
-      const position = {};
-      if (e.detail) {
-        position.pageX = e.pageX;
-        position.pageY = e.pageY;
-      } else {
-        position.pageX = e.target.offsetLeft + (e.target.offsetWidth / 2);
-        position.pageY = e.target.offsetTop + (e.target.offsetHeight / 2);
-      }
-      this.setState(state => {
-        Object.assign(state.popup, position);
-        return state;
-      });
     }
+    this.setState(state => {
+      const show = (name === state.popup.name && id === state.popup.id) ? !state.popup.show : true;
+      const settings = {
+        show,
+        name,
+        id
+      };
+
+      if (e && show) {
+        const rect = e.target.getBoundingClientRect();
+        const target = {
+          x: rect.left + state.window.scrollX,
+          y: rect.top + state.window.scrollY,
+          w: rect.width,
+          h: rect.height
+        };
+        if (e.detail) {
+          settings.pageX = e.pageX;
+          settings.pageY = e.pageY;
+        } else {
+          settings.pageX = target.x + (target.w / 2);
+          settings.pageY = target.y + (target.h / 2);
+        }
+      }
+
+      Object.assign(state.popup, settings);
+      return state;
+    });
   }
 
   windowResize(e) {
+    const window = e.currentTarget;
     this.setState(state => {
-      Object.assign(state.popup, {
-        show: false,
-        windowWidth: e.currentTarget.innerWidth,
-        windowHeight: e.currentTarget.innerHeight
+      Object.assign(state, {
+        window: {
+          width: window.innerWidth,
+          height: window.innerHeight,
+          scrollX: window.scrollX,
+          scrollY: window.scrollY
+        },
+        popup: {
+          show: false
+        }
       });
       return state;
     });
