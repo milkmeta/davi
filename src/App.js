@@ -108,14 +108,17 @@ class App extends MicroContainer {
 
   todoChangeBoolean(id, type, value = null) {
     this.setState(state => {
-      const item = state.master[id];
-      if (type === 'archive' && item.isRoot) {
-        return;
-      }
-      item[type] = (value !== null) ? value : !item[type];
-      if (type === 'checked' && item[type] && item.childrenIds) {
-        item.childrenIds.forEach(id => this.todoChangeBoolean(id, 'checked', true));
-      }
+      const changeItem = (id, type, value) => {
+        const item = state.master[id];
+        if (type === 'archive' && item.isRoot) {
+          return;
+        }
+        item[type] = (value !== null) ? value : !item[type];
+        if (type === 'checked' && item[type] && item.childrenIds) {
+          item.childrenIds.forEach(id => changeItem(id, 'checked', true));
+        }
+      };
+      changeItem(id, type, value);
       return state;
     });
   }
