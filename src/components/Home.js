@@ -5,6 +5,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import Header from './Header';
+import TaskPopup from './TaskPopup';
 import TaskSummaryList from './TaskSummaryList';
 import TaskSummaryPopup from './TaskSummaryPopup';
 import TaskDetailList from './TaskDetailList';
@@ -23,11 +24,15 @@ const Home = props => {
       <div className="Home__body">
         <aside className="Home__aside">
           <TaskSummaryList master={props.master} childrenIds={[props.rootId]} dispatch={props.dispatch} />
-          <TaskSummaryPopup master={props.master} window={props.window} settings={props.popup} dispatch={props.dispatch} />
+          <TaskPopup name="TaskSummaryPopup" master={props.master} window={props.window} settings={props.popup} dispatch={props.dispatch}>
+            <TaskSummaryPopup dispatch={props.dispatch}/>
+          </TaskPopup>
         </aside>
         <main className="Home__main">
           <TaskDetailList master={props.master} childrenIds={[props.rootId]} dispatch={props.dispatch} />
-          <TaskDetailPopup master={props.master} window={props.window} settings={props.popup} dispatch={props.dispatch} />
+          <TaskPopup name="TaskDetailPopup" master={props.master} window={props.window} settings={props.popup} dispatch={props.dispatch}>
+            <TaskDetailPopup dispatch={props.dispatch}/>
+          </TaskPopup>
         </main>
       </div>
       <EventListener target="window" onLoad={windowEvent} onResize={windowEvent} onScroll={windowEvent} />

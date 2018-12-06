@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './TaskPopup.scss';
 
 class TaskPopup extends Component {
@@ -18,15 +17,13 @@ class TaskPopup extends Component {
     const props = this.props;
     const { window, settings } = props;
 
-    const popupName = 'TaskPopup';
-
     const itemDefault = {
       isRoot: false
     };
     const itemRaw = props.master[settings.id];
     const item = Object.assign({}, itemDefault, itemRaw);
 
-    const show = (settings.name === popupName && settings.show);
+    const show = (settings.name === props.name && settings.show);
     const style = {};
     if (show && state.offsetParent) {
       const rect = state.offsetParent.getBoundingClientRect();
@@ -41,12 +38,7 @@ class TaskPopup extends Component {
     }
 
     return (
-
-
-
-
-
-
+      <this.props.children settings={settings} item={item} show={show} style={style} ref={this.boxRef} />
     );
   }
 
