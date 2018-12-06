@@ -30,9 +30,8 @@ const TaskSummaryList = props => {
   );
 };
 
-// TaskSummaryList.defaultProps = {
-//   master: {},
-//   childrenIds: []
-// };
+TaskSummaryList.defaultProps = {
+  childrenIds: []
+};
 
 export default TaskSummaryList;

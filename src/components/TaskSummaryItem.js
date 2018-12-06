@@ -19,9 +19,8 @@ const TaskSummaryItem = props => {
   );
 };
 
-// TaskSummaryItem.defaultProps = {
-//   master: {},
-//   id: ''
-// };
+TaskSummaryItem.defaultProps = {
+  id: ''
+};
 
 export default TaskSummaryItem;
