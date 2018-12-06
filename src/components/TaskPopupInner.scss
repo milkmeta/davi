@@ -1,10 +1,8 @@
 @import "./variables";
 @import "./mixins";
 
-.TaskDetailPopup {
+.TaskPopupInner {
   @include reset-list;
-  display: none;
-  position: absolute;
   min-width: 10rem;
   padding: .25rem;
   border: solid 1px $color-gray-01;
@@ -33,9 +31,5 @@
   &__icon {
     min-width: 1em;
     margin-right: .5rem;
-  }
-
-  &[data-visible="true"] {
-    display: block;
   }
 }
