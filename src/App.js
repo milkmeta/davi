@@ -60,24 +60,12 @@ class App extends MicroContainer {
   }
 
   todoAddSibling(eventId) {
-    this.setState(state => {
-      const eventItem = state.master[eventId];
-      if (eventItem.isRoot) {
-        return;
-      }
-      const id = eventItem.parentId;
-      const item = state.master[id];
-      const uuid = uuidv4();
-      state.master[uuid] = {
-        title: '',
-        parentId: [id]
-      };
-      if (!item.childrenIds) {
-        item.childrenIds = [];
-      }
-      item.childrenIds.push(uuid);
-      return state;
-    });
+    const eventItem = this.state.master[eventId];
+    if (eventItem.isRoot) {
+      return;
+    }
+    const id = eventItem.parentId;
+    this.todoAddChild(id);
   }
 
   todoAddChild(id) {
