@@ -15,31 +15,31 @@ class TaskPopupContainer extends Component {
   render() {
     const state = this.state;
     const props = this.props;
-    const { window, settings } = props;
+    const { window, popup } = props;
 
     const itemDefault = {
       isRoot: false
     };
-    const itemRaw = props.master[settings.id];
+    const itemRaw = props.master[popup.id];
     const item = Object.assign({}, itemDefault, itemRaw);
 
-    const show = (settings.name === props.name && settings.show);
+    const show = (popup.name === props.name && popup.show);
     const style = {};
     if (show && state.offsetParent) {
       const rect = state.offsetParent.getBoundingClientRect();
-      style.left = settings.pageX - (rect.left + window.scrollX);
-      style.top = settings.pageY - (rect.top + window.scrollY);
-      if ((settings.pageX + state.width) > window.width) {
+      style.left = popup.pageX - (rect.left + window.scrollX);
+      style.top = popup.pageY - (rect.top + window.scrollY);
+      if ((popup.pageX + state.width) > window.width) {
         style.left -= state.width;
       }
-      if ((settings.pageY + state.height) > window.height) {
+      if ((popup.pageY + state.height) > window.height) {
         style.top -= state.height;
       }
     }
 
     return (
       <div className="TaskPopupContainer" data-visible={show} style={style} ref={this.boxRef}>
-        {React.cloneElement(this.props.children, { item, id: settings.id })}
+        {React.cloneElement(this.props.children, { item, ...props })}
       </div>
     );
   }

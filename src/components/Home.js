@@ -19,19 +19,19 @@ const Home = props => {
   return (
     <div className="Home">
       <header className="Home__header">
-        <Header dispatch={props.dispatch} />
+        <Header {...props} />
       </header>
       <div className="Home__body">
         <aside className="Home__aside">
-          <TaskSummaryList master={props.master} childrenIds={[props.rootId]} dispatch={props.dispatch} />
-          <TaskPopupContainer name="TaskSummaryPopup" master={props.master} window={props.window} settings={props.popup} dispatch={props.dispatch}>
-            <TaskSummaryPopup dispatch={props.dispatch} />
+          <TaskSummaryList childrenIds={[props.rootId]} {...props} />
+          <TaskPopupContainer name="TaskSummaryPopup" {...props} >
+            <TaskSummaryPopup {...props} />
           </TaskPopupContainer>
         </aside>
         <main className="Home__main">
-          <TaskDetailList master={props.master} childrenIds={[props.rootId]} dispatch={props.dispatch} />
-          <TaskPopupContainer name="TaskDetailPopup" master={props.master} window={props.window} settings={props.popup} dispatch={props.dispatch}>
-            <TaskDetailPopup dispatch={props.dispatch} />
+          <TaskDetailList childrenIds={[props.rootId]} {...props} />
+          <TaskPopupContainer name="TaskDetailPopup" {...props} >
+            <TaskDetailPopup {...props} />
           </TaskPopupContainer>
         </main>
       </div>
