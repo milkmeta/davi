@@ -4,4 +4,8 @@
 .TaskPopupContainer {
   display: none;
   position: absolute;
+
+  &[data-visible="true"] {
+    display: block;
+  }
 }
