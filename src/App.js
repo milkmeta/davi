@@ -117,6 +117,9 @@ class App extends MicroContainer {
         if (type === 'checked' && item[type] && item.childrenIds) {
           item.childrenIds.forEach(id => changeItem(id, 'checked', true));
         }
+        if (type === 'checked' && !item[type] && item.parentId) {
+          changeItem(item.parentId, 'checked', false);
+        }
       };
       changeItem(id, type, value);
       return state;
