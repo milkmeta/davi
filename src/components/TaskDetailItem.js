@@ -36,9 +36,9 @@ const TaskDetailItem = props => {
   );
 };
 
-TaskDetailItem.defaultProps = {
-  master: {},
-  id: ''
-};
+// TaskDetailItem.defaultProps = {
+//   master: {},
+//   id: ''
+// };
 
 export default TaskDetailItem;

@@ -57,11 +57,11 @@ class TaskPopupContainer extends Component {
   }
 }
 
-TaskPopupContainer.defaultProps = {
-  master: {},
-  window: {},
-  popup: {},
-  name: ''
-};
+// TaskPopupContainer.defaultProps = {
+//   master: {},
+//   window: {},
+//   popup: {},
+//   name: ''
+// };
 
 export default TaskPopupContainer;

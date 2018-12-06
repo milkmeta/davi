@@ -12,9 +12,9 @@ const TaskDetailList = props => (
   </ul>
 );
 
-TaskDetailList.defaultProps = {
-  master: {},
-  childrenIds: []
-};
+// TaskDetailList.defaultProps = {
+//   master: {},
+//   childrenIds: []
+// };
 
 export default TaskDetailList;

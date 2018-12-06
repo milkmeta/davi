@@ -40,9 +40,9 @@ const Home = props => {
   );
 };
 
-Home.defaultProps = {
-  master: {},
-  rootId: ''
-};
+// Home.defaultProps = {
+//   master: {},
+//   rootId: ''
+// };
 
 export default Home;
