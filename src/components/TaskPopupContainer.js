@@ -61,7 +61,7 @@ TaskPopupContainer.defaultProps = {
   master: {},
   window: {},
   popup: {},
-  name: ""
+  name: ''
 };
 
 export default TaskPopupContainer;

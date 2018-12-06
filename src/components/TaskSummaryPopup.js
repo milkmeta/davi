@@ -38,7 +38,7 @@ const TaskSummaryPopup = props => {
 };
 
 TaskSummaryPopup.defaultProps = {
-  id: "",
+  id: '',
   item: {}
 };
 
