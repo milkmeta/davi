@@ -7,7 +7,7 @@ const TaskSummaryPopup = props => {
     <ul className="TaskPopupInner">
       <li>
         <button onClick={() => {
-          props.dispatch('todoChangeStar', props.id);
+          props.dispatch('todoChangeBoolean', props.id, 'starred');
           props.dispatch('todoPopup', props.name, props.id);
         }}>
           <FontAwesomeIcon className="TaskPopupInner__icon" icon={[(!props.item.starred ? 'fas' : 'far'), 'star']} />
@@ -16,7 +16,7 @@ const TaskSummaryPopup = props => {
       </li>
       <li>
         <button disabled={props.item.isRoot} onClick={() => {
-          props.dispatch('todoChangeArchive', props.id);
+          props.dispatch('todoChangeBoolean', props.id, 'archived');
           props.dispatch('todoPopup', props.name, props.id);
         }}>
           <FontAwesomeIcon className="TaskPopupInner__icon" icon={['fas', 'archive']} />

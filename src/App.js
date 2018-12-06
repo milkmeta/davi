@@ -41,11 +41,8 @@ class App extends MicroContainer {
       todoAddSibling: this.todoAddSibling,
       todoAddChild: this.todoAddChild,
       todoDelete: this.todoDelete,
-      todoChangeTitle: this.todoChangeTitle,
-      todoChangeDate: this.todoChangeDate,
-      todoChangeStatus: this.todoChangeStatus,
-      todoChangeStar: this.todoChangeStar,
-      todoChangeArchive: this.todoChangeArchive,
+      todoChangeText: this.todoChangeText,
+      todoChangeBoolean: this.todoChangeBoolean,
       todoPopup: this.todoPopup,
       windowResize: this.windowResize
     });
@@ -113,45 +110,24 @@ class App extends MicroContainer {
     });
   }
 
-  todoChangeTitle(id, value) {
+  todoChangeText(id, type, value) {
     this.setState(state => {
       const item = state.master[id];
-      item.title = value;
+      item[type] = value;
       return state;
     });
   }
 
-  todoChangeDate(id, value) {
+  todoChangeBoolean(id, type, value = null) {
     this.setState(state => {
       const item = state.master[id];
-      item.date = value;
-      return state;
-    });
-  }
-
-  todoChangeStar(id) {
-    this.setState(state => {
-      const item = state.master[id];
-      item.starred = !item.starred;
-      return state;
-    });
-  }
-
-  todoChangeStatus(id) {
-    this.setState(state => {
-      const item = state.master[id];
-      item.checked = !item.checked;
-      return state;
-    });
-  }
-
-  todoChangeArchive(id) {
-    this.setState(state => {
-      const item = state.master[id];
-      if (item.isRoot) {
+      if (type === 'archive' && item.isRoot) {
         return;
       }
-      item.archived = !item.archived;
+      item[type] = value !== null ? value : !item[type];
+      if (type === 'checked' && item[type] && item.childrenIds) {
+        item.childrenIds.forEach(id => this.todoChangeBoolean('checked', id, true));
+      }
       return state;
     });
   }
