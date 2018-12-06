@@ -215,7 +215,7 @@ class App extends MicroContainer {
 
   render() {
     return (
-      <Home dispatch={this.dispatch} {...this.state} />
+      <Home {...this.state} dispatch={this.dispatch} />
     );
   }
 }

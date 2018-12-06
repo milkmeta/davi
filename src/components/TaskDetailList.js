@@ -6,14 +6,13 @@ const TaskDetailList = props => (
   <ul className="TaskDetailList">
     {props.childrenIds.map(id => (
       <li key={id}>
-        <TaskDetailItem master={props.master} id={id} dispatch={props.dispatch} />
+        <TaskDetailItem {...props} id={id} />
       </li>
     ))}
   </ul>
 );
 
 TaskDetailList.defaultProps = {
-  master: {},
   childrenIds: []
 };
 

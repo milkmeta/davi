@@ -20,7 +20,6 @@ const TaskSummaryItem = props => {
 };
 
 TaskSummaryItem.defaultProps = {
-  master: {},
   id: ''
 };
 
