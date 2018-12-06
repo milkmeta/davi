@@ -56,9 +56,8 @@ const TaskDetailPopup = props => {
 };
 
 TaskDetailPopup.defaultProps = {
-  master: {},
-  window: {},
-  popup: {}
+  id: "",
+  item: {}
 };
 
 export default TaskDetailPopup;

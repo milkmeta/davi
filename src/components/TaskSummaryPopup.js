@@ -38,9 +38,8 @@ const TaskSummaryPopup = props => {
 };
 
 TaskSummaryPopup.defaultProps = {
-  master: {},
-  window: {},
-  popup: {}
+  id: "",
+  item: {}
 };
 
 export default TaskSummaryPopup;
