@@ -129,6 +129,7 @@ class App extends MicroContainer {
   todoPopup(id, name, e) {
     if (e) {
       e.persist();
+      e.stopPropagation();
     }
     this.setState(state => {
       const popup = {};
