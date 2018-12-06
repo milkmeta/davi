@@ -112,9 +112,9 @@ class App extends MicroContainer {
       if (type === 'archive' && item.isRoot) {
         return;
       }
-      item[type] = value !== null ? value : !item[type];
+      item[type] = (value !== null) ? value : !item[type];
       if (type === 'checked' && item[type] && item.childrenIds) {
-        item.childrenIds.forEach(id => this.todoChangeBoolean('checked', id, true));
+        item.childrenIds.forEach(id => this.todoChangeBoolean(id, 'checked', true));
       }
       return state;
     });
