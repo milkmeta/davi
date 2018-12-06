@@ -25,7 +25,7 @@ const TaskDetailItem = props => {
           <input type="text" className="TaskDetailItem__text TaskDetailItem__text--title" value={item.title} onChange={e => props.dispatch('todoChangeText', props.id, 'title', e.target.value)} />
           <input type="date" className="TaskDetailItem__text TaskDetailItem__text--date" value={item.date} onChange={e => props.dispatch('todoChangeText', props.id, 'date', e.target.value)} />
         </div>
-        <button className="TaskDetailItem__button" onClick={e => props.dispatch('todoPopup', 'TaskDetailPopup', props.id, e)}>
+        <button className="TaskDetailItem__button" onClick={e => props.dispatch('todoPopup', props.id, 'TaskDetailPopup', e)}>
           <FontAwesomeIcon icon={['fas', 'ellipsis-h']} />
         </button>
       </div>

@@ -126,36 +126,36 @@ class App extends MicroContainer {
     });
   }
 
-  todoPopup(name, id = '', e) {
+  todoPopup(id, name, e) {
     if (e) {
       e.persist();
     }
     this.setState(state => {
-      const show = (name === state.popup.name && id === state.popup.id) ? !state.popup.show : true;
-      const settings = {
-        show,
-        name,
-        id
-      };
-
-      if (e && show) {
-        const rect = e.target.getBoundingClientRect();
-        const target = {
-          x: rect.left + state.window.scrollX,
-          y: rect.top + state.window.scrollY,
-          w: rect.width,
-          h: rect.height
-        };
-        if (e.detail) {
-          settings.pageX = e.pageX;
-          settings.pageY = e.pageY;
-        } else {
-          settings.pageX = target.x + (target.w / 2);
-          settings.pageY = target.y + (target.h / 2);
+      const popup = {};
+      if (id === false) {
+        popup.show = false;
+      } else {
+        popup.id = id;
+        popup.name = name;
+        popup.show = (name === state.popup.name && id === state.popup.id) ? !state.popup.show : true;
+        if (popup.show) {
+          if (e.detail) {
+            popup.pageX = e.pageX;
+            popup.pageY = e.pageY;
+          } else {
+            const rect = e.target.getBoundingClientRect();
+            const target = {
+              x: rect.left + state.window.scrollX,
+              y: rect.top + state.window.scrollY,
+              w: rect.width,
+              h: rect.height
+            };
+            popup.pageX = target.x + (target.w / 2);
+            popup.pageY = target.y + (target.h / 2);
+          }
         }
       }
-
-      Object.assign(state.popup, settings);
+      Object.assign(state.popup, popup);
       return state;
     });
   }
