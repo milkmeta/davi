@@ -67,7 +67,7 @@ class TaskDetailPopup extends Component {
           }}>
             <FontAwesomeIcon className="TaskDetailPopup__icon" icon={[(!item.starred ? 'fas' : 'far'), 'star']} />
             <span className="TaskDetailPopup__text">{!item.starred ? 'スターをつける' : 'スターを外す'}</span>
-        </button>
+          </button>
         </li>
         <li>
           <button disabled={item.isRoot} onClick={() => {

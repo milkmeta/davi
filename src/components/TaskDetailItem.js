@@ -25,7 +25,9 @@ const TaskDetailItem = props => {
           <input type="text" className="TaskDetailItem__text TaskDetailItem__text--title" value={item.title} onChange={e => props.dispatch('todoChangeTitle', props.id, e.target.value)} />
           <input type="date" className="TaskDetailItem__text TaskDetailItem__text--date" value={item.date} onChange={e => props.dispatch('todoChangeDate', props.id, e.target.value)} />
         </div>
-        <button className="TaskDetailItem__button" onClick={e => props.dispatch('todoPopup', 'TaskDetailPopup', props.id, e)}><FontAwesomeIcon icon={['fas', 'ellipsis-h']} /></button>
+        <button className="TaskDetailItem__button" onClick={e => props.dispatch('todoPopup', 'TaskDetailPopup', props.id, e)}>
+          <FontAwesomeIcon icon={['fas', 'ellipsis-h']} />
+        </button>
       </div>
       <div className="TaskDetailItem__children">
         {item.childrenIds ? <TaskDetailList master={props.master} childrenIds={item.childrenIds} dispatch={props.dispatch} /> : null}

@@ -13,7 +13,6 @@ import './Home.scss';
 
 library.add(fas, fab, far);
 
-
 const Home = props => {
   const windowEvent = e => props.dispatch('windowResize', e);
   return (
@@ -24,11 +23,11 @@ const Home = props => {
       <div className="Home__body">
         <aside className="Home__aside">
           <TaskSummaryList master={props.master} childrenIds={[props.rootId]} dispatch={props.dispatch} />
-          <TaskSummaryPopup master={props.master} window={props.window} settings={props.popup} dispatch={props.dispatch}/>
+          <TaskSummaryPopup master={props.master} window={props.window} settings={props.popup} dispatch={props.dispatch} />
         </aside>
         <main className="Home__main">
           <TaskDetailList master={props.master} childrenIds={[props.rootId]} dispatch={props.dispatch} />
-          <TaskDetailPopup master={props.master} window={props.window} settings={props.popup} dispatch={props.dispatch}/>
+          <TaskDetailPopup master={props.master} window={props.window} settings={props.popup} dispatch={props.dispatch} />
         </main>
       </div>
       <EventListener target="window" onLoad={windowEvent} onResize={windowEvent} onScroll={windowEvent} />

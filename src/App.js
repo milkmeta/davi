@@ -27,7 +27,7 @@ const defaultState = {
     pageY: null
   }
 };
-const lastState =  JSON.parse(localStorage.getItem(localStorageName));
+const lastState = JSON.parse(localStorage.getItem(localStorageName));
 
 class App extends MicroContainer {
   constructor(props) {
