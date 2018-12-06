@@ -39,7 +39,7 @@ class TaskPopupContainer extends Component {
 
     return (
       <div className="TaskPopupContainer" data-visible={show} style={style} ref={this.boxRef}>
-        {React.cloneElement(this.props.children, { item, ...props })}
+        {React.cloneElement(this.props.children, { ...props, item })}
       </div>
     );
   }

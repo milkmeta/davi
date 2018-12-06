@@ -23,7 +23,7 @@ const TaskSummaryList = props => {
     <ul className="TaskSummaryList">
       {starredIds.map(id => (
         <li key={id}>
-          <TaskSummaryItem id={id} {...props} />
+          <TaskSummaryItem {...props} id={id} />
         </li>
       ))}
     </ul>

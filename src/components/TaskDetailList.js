@@ -6,7 +6,7 @@ const TaskDetailList = props => (
   <ul className="TaskDetailList">
     {props.childrenIds.map(id => (
       <li key={id}>
-        <TaskDetailItem id={id} {...props} />
+        <TaskDetailItem {...props} id={id} />
       </li>
     ))}
   </ul>

@@ -30,7 +30,7 @@ const TaskDetailItem = props => {
         </button>
       </div>
       <div className="TaskDetailItem__children">
-        {item.childrenIds ? <TaskDetailList master={props.master} childrenIds={item.childrenIds} dispatch={props.dispatch} /> : null}
+        {item.childrenIds ? <TaskDetailList {...props} childrenIds={item.childrenIds} /> : null}
       </div>
     </div>
   );
