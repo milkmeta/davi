@@ -46,15 +46,15 @@ class TaskPopup extends Component {
 
   componentDidMount() {
     console.log(this.boxRef);
-    // const box = this.boxRef.current;
-    // const originalStyle = box.getAttribute('style');
-    // box.setAttribute('style', 'position: absolute; visibility: hidden; display: block;');
-    // this.setState({
-    //   width: box.offsetWidth,
-    //   height: box.offsetHeight,
-    //   offsetParent: box.offsetParent
-    // });
-    // box.setAttribute('style', originalStyle);
+    const box = this.boxRef.current;
+    const originalStyle = box.getAttribute('style');
+    box.setAttribute('style', 'position: absolute; visibility: hidden; display: block;');
+    this.setState({
+      width: box.offsetWidth,
+      height: box.offsetHeight,
+      offsetParent: box.offsetParent
+    });
+    box.setAttribute('style', originalStyle);
   }
 }
 

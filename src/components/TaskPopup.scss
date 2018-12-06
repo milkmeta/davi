@@ -2,7 +2,6 @@
 @import "./mixins";
 
 .TaskPopup {
-  @include reset-list;
   display: none;
   position: absolute;
   min-width: 10rem;
@@ -10,6 +9,10 @@
   border: solid 1px $color-gray-01;
   background-color: $color-white-01;
   font-size: .875rem;
+
+  ul {
+    @include reset-list;
+  }
 
   button {
     @include reset-border;
