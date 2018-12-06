@@ -17,7 +17,7 @@ library.add(fas, fab, far);
 const Home = props => {
   const windowEvent = e => props.dispatch('windowResize', e);
   return (
-    <div className="Home">
+    <div className="Home" onClick={() => props.dispatch('todoPopup', false)}>
       <header className="Home__header">
         <Header {...props} />
       </header>
