@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const TaskSummaryPopup = props => {
   const popupName = 'TaskSummaryPopup';
   return (
-    <ul className="TaskSummaryPopup" data-visible={props.show} style={props.style} ref={props.ref}>
+    <ul className="TaskPopup" data-visible={props.show} style={props.style} ref={props.ref}>
       <li>
         <button onClick={() => {
           props.dispatch('todoChangeStar', props.settingsid);

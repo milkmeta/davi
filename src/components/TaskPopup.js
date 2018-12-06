@@ -38,20 +38,27 @@ class TaskPopup extends Component {
     }
 
     return (
-      <this.props.children settings={settings} item={item} show={show} style={style} ref={this.boxRef} />
+      React.cloneElement(this.props.children, {
+        settings,
+        item,
+        show,
+        style,
+        ref: this.boxRef
+      })
     );
   }
 
   componentDidMount() {
-    const box = this.boxRef.current;
-    const originalStyle = box.getAttribute('style');
-    box.setAttribute('style', 'position: absolute; visibility: hidden; display: block;');
-    this.setState({
-      width: box.offsetWidth,
-      height: box.offsetHeight,
-      offsetParent: box.offsetParent
-    });
-    box.setAttribute('style', originalStyle);
+    console.log(this.boxRef);
+    // const box = this.boxRef.current;
+    // const originalStyle = box.getAttribute('style');
+    // box.setAttribute('style', 'position: absolute; visibility: hidden; display: block;');
+    // this.setState({
+    //   width: box.offsetWidth,
+    //   height: box.offsetHeight,
+    //   offsetParent: box.offsetParent
+    // });
+    // box.setAttribute('style', originalStyle);
   }
 }
 

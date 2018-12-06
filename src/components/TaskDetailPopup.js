@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const TaskDetailPopup = props => {
   const popupName = 'TaskDetailPopup';
   return (
-    <ul className="TaskDetailPopup" data-visible={props.show} style={props.style} ref={props.ref}>
+    <ul className="TaskPopup" data-visible={props.show} style={props.style} ref={props.ref}>
       <li>
         <button disabled={props.item.isRoot} onClick={() => {
           props.dispatch('todoAddSibling', props.settingsid);
