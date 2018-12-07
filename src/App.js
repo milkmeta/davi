@@ -46,7 +46,8 @@ class App extends MicroContainer {
       todoChangeText: this.todoChangeText,
       todoChangeBoolean: this.todoChangeBoolean,
       todoPopup: this.todoPopup,
-      todoPopupKeyDown: this.todoPopupKeyDown,
+      homeClick: this.homeClick,
+      homeKeyDown: this.homeKeyDown,
       windowResize: this.windowResize
     });
   }
@@ -164,10 +165,19 @@ class App extends MicroContainer {
     });
   }
 
-  todoPopupKeyDown(e) {
+  homeClick(e) {
     e.persist();
-    if (e.keyCode === 27) {
+    if (this.state.popup.show) {
       this.todoPopup(false);
+    }
+  }
+
+  homeKeyDown(e) {
+    e.persist();
+    if (this.state.popup.show) {
+      if (e.keyCode === 27) {
+        this.todoPopup(false);
+      }
     }
   }
 

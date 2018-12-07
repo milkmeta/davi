@@ -17,7 +17,7 @@ library.add(fas, fab, far);
 const Home = props => {
   const windowEvent = e => props.dispatch('windowResize', e);
   return (
-    <div className="Home" onClick={() => props.dispatch('todoPopup', false)}>
+    <div className="Home" onClick={e => props.dispatch('homeClick', e)} onKeyDown={e => props.dispatch('homeKeyDown', e)}>
       <header className="Home__header">
         <Header {...props} />
       </header>
