@@ -24,13 +24,13 @@ const Home = props => {
       <div className="Home__body">
         <aside className="Home__aside">
           <TaskSummaryList {...props} childrenIds={[props.rootId]}  />
-          <TaskPopupContainer {...props} name="TaskSummaryPopup"  >
+          <TaskPopupContainer {...props}>
             <TaskSummaryPopup {...props} />
           </TaskPopupContainer>
         </aside>
         <main className="Home__main">
           <TaskDetailList {...props} childrenIds={[props.rootId]} />
-          <TaskPopupContainer {...props} name="TaskDetailPopup">
+          <TaskPopupContainer {...props}>
             <TaskDetailPopup {...props} />
           </TaskPopupContainer>
         </main>
