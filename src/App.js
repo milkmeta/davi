@@ -46,6 +46,7 @@ class App extends MicroContainer {
       todoChangeText: this.todoChangeText,
       todoChangeBoolean: this.todoChangeBoolean,
       todoPopup: this.todoPopup,
+      todoPopupKeyDown: this.todoPopupKeyDown,
       windowResize: this.windowResize
     });
   }
@@ -161,6 +162,13 @@ class App extends MicroContainer {
       Object.assign(state.popup, popup);
       return state;
     });
+  }
+
+  todoPopupKeyDown(e) {
+    e.persist();
+    if (e.keyCode === 27) {
+      this.todoPopup(false);
+    }
   }
 
   windowResize(e) {

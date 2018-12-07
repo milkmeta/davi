@@ -38,7 +38,7 @@ class TaskPopupContainer extends Component {
     }
 
     return (
-      <div className="TaskPopupContainer" data-visible={show} style={style} ref={this.boxRef}>
+      <div className="TaskPopupContainer" data-visible={show} style={style} ref={this.boxRef} onKeyDown={e => props.dispatch('todoPopupKeyDown', e)}>
         {React.cloneElement(props.children, {
           id: popup.id,
           item
