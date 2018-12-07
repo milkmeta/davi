@@ -29,10 +29,10 @@ class TaskPopupContainer extends Component {
       const rect = state.offsetParent.getBoundingClientRect();
       style.left = popup.pageX - (rect.left + window.scrollX);
       style.top = popup.pageY - (rect.top + window.scrollY);
-      if ((popup.pageX + state.width) > window.width) {
+      if ((popup.pageX + state.width) > window.clientWidth) {
         style.left -= state.width;
       }
-      if ((popup.pageY + state.height) > window.height) {
+      if ((popup.pageY + state.height) > window.clientHeight) {
         style.top -= state.height;
       }
     }

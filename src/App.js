@@ -16,6 +16,8 @@ const defaultState = {
   window: {
     width: null,
     height: null,
+    clientWidth: null,
+    clientHeight: null,
     scrollX: null,
     scrollY: null
   },
@@ -163,11 +165,14 @@ class App extends MicroContainer {
 
   windowResize(e) {
     const window = e.currentTarget;
+    const html = window.document.documentElement;
     this.setState(state => {
       Object.assign(state, {
         window: {
           width: window.innerWidth,
           height: window.innerHeight,
+          clientWidth: html.clientWidth,
+          clientHeight: html.clientHeight,
           scrollX: window.scrollX,
           scrollY: window.scrollY
         },
