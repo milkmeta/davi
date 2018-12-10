@@ -185,19 +185,15 @@ class App extends MicroContainer {
     const window = e.currentTarget;
     const html = window.document.documentElement;
     this.setState(state => {
-      Object.assign(state, {
-        window: {
-          width: window.innerWidth,
-          height: window.innerHeight,
-          clientWidth: html.clientWidth,
-          clientHeight: html.clientHeight,
-          scrollX: window.scrollX,
-          scrollY: window.scrollY
-        },
-        popup: {
-          show: false
-        }
+      Object.assign(state.window, {
+        width: window.innerWidth,
+        height: window.innerHeight,
+        clientWidth: html.clientWidth,
+        clientHeight: html.clientHeight,
+        scrollX: window.scrollX,
+        scrollY: window.scrollY
       });
+      state.popup.show = false;
       return state;
     });
   }
