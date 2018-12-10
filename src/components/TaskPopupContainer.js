@@ -14,8 +14,7 @@ class TaskPopupContainer extends Component {
   }
 
   render() {
-    const state = this.state;
-    const props = this.props;
+    const { state, props, boxRef } = this;
     const { window, popup } = props;
 
     const itemDefault = {
@@ -38,7 +37,7 @@ class TaskPopupContainer extends Component {
     }
 
     return (
-      <div className="TaskPopupContainer" data-visible={show} style={style} ref={this.boxRef}>
+      <div className="TaskPopupContainer" data-visible={state.show} style={style} ref={boxRef}>
         {React.cloneElement(props.children, {
           id: popup.id,
           item
