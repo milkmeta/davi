@@ -47,7 +47,8 @@ class TaskPopupContainer extends Component {
   }
 
   componentDidMount() {
-    const box = this.boxRef.current;
+    const { boxRef } = this;
+    const box = boxRef.current;
     const originalStyle = box.getAttribute('style');
     box.setAttribute('style', 'position: absolute; visibility: hidden; display: block;');
     this.setState({
@@ -66,9 +67,9 @@ class TaskPopupContainer extends Component {
   }
 
   componentDidUpdate() {
-    const { state } = this;
+    const { state, boxRef } = this;
     if (state.show) {
-      const box = this.boxRef.current;
+      const box = boxRef.current;
       const focusable = 'button:not(:disabled),[href]:not(:disabled),input:not(:disabled),select:not(:disabled),textarea:not(:disabled),[tabindex]:not([tabindex="-1"]):not(:disabled)';
       box.querySelectorAll(focusable)[0].focus();
     }
