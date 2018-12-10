@@ -5,6 +5,7 @@ class TaskPopupContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      show: null,
       width: null,
       height: null,
       offsetParent: null
@@ -23,9 +24,8 @@ class TaskPopupContainer extends Component {
     const itemRaw = props.master[popup.id];
     const item = Object.assign({}, itemDefault, itemRaw);
 
-    const show = (popup.name === props.children.type.name && popup.show);
     const style = {};
-    if (show && state.offsetParent) {
+    if (state.show && state.offsetParent && typeof popup.pageX !== 'undefined') {
       const rect = state.offsetParent.getBoundingClientRect();
       style.left = popup.pageX - (rect.left + window.scrollX);
       style.top = popup.pageY - (rect.top + window.scrollY);
@@ -57,6 +57,22 @@ class TaskPopupContainer extends Component {
       offsetParent: box.offsetParent
     });
     box.setAttribute('style', originalStyle);
+  }
+
+  componentWillReceiveProps() {
+    const { props } = this;
+    const { popup } = props;
+    const show = (popup.name === props.children.type.name && popup.show);
+    this.setState({ show });
+  }
+
+  componentDidUpdate() {
+    const { state } = this;
+    if (state.show) {
+      const box = this.boxRef.current;
+      const focusable = 'button:not(:disabled),[href]:not(:disabled),input:not(:disabled),select:not(:disabled),textarea:not(:disabled),[tabindex]:not([tabindex="-1"]):not(:disabled)';
+      box.querySelectorAll(focusable)[0].focus();
+    }
   }
 }
 
