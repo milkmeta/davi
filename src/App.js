@@ -16,6 +16,8 @@ const defaultState = {
   window: {
     width: null,
     height: null,
+    clientWidth: null,
+    clientHeight: null,
     scrollX: null,
     scrollY: null
   },
@@ -44,6 +46,8 @@ class App extends MicroContainer {
       todoChangeText: this.todoChangeText,
       todoChangeBoolean: this.todoChangeBoolean,
       todoPopup: this.todoPopup,
+      homeClick: this.homeClick,
+      homeKeyDown: this.homeKeyDown,
       windowResize: this.windowResize
     });
   }
@@ -161,20 +165,35 @@ class App extends MicroContainer {
     });
   }
 
+  homeClick(e) {
+    e.persist();
+    if (this.state.popup.show) {
+      this.todoPopup(false);
+    }
+  }
+
+  homeKeyDown(e) {
+    e.persist();
+    if (this.state.popup.show) {
+      if (e.keyCode === 27) {
+        this.todoPopup(false);
+      }
+    }
+  }
+
   windowResize(e) {
     const window = e.currentTarget;
+    const html = window.document.documentElement;
     this.setState(state => {
-      Object.assign(state, {
-        window: {
-          width: window.innerWidth,
-          height: window.innerHeight,
-          scrollX: window.scrollX,
-          scrollY: window.scrollY
-        },
-        popup: {
-          show: false
-        }
+      Object.assign(state.window, {
+        width: window.innerWidth,
+        height: window.innerHeight,
+        clientWidth: html.clientWidth,
+        clientHeight: html.clientHeight,
+        scrollX: window.scrollX,
+        scrollY: window.scrollY
       });
+      state.popup.show = false;
       return state;
     });
   }
